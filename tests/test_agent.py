@@ -1,0 +1,95 @@
+"""Offline tests: a scripted fake LLM drives the real agent loop and the real sandbox."""
+import asyncio
+
+from app.agent import POLICIES, Agent, Task, extract_code, extract_json
+from app.llm import LLMResult, split_reasoning
+from app.sandbox import run_tests
+
+TESTS = '''```python
+def test_small():
+    assert add(1, 2) == 3
+def test_neg():
+    assert add(-1, -1) == -2
+```'''
+WRONG = "```python\ndef add(a, b):\n    return a - b\n```"
+RIGHT = "Root cause: subtraction.\n```python\ndef add(a, b):\n    return a + b\n```"
+
+
+class FakeLLM:
+    """Answers by role; `code_answers[tier]` is consumed in order."""
+
+    def __init__(self, code_answers, triage='{"difficulty": "easy", "why": "x"}'):
+        self.code_answers = {k: list(v) for k, v in code_answers.items()}
+        self.triage = triage
+        self.calls = []
+
+    async def chat(self, tier, messages, **kw):
+        sys = messages[0]["content"]
+        if "dispatcher" in sys:
+            text = self.triage
+        elif "unit tests" in sys:
+            text = TESTS
+        else:
+            text = self.code_answers[tier.name].pop(0)
+        self.calls.append(tier.name)
+        return LLMResult(tier.name, tier.model, text, "thinking...", 100, 50, 0.01, tier.cost(100, 50))
+
+
+def collect(agent, task, policy):
+    async def go():
+        return [ev async for ev in agent.solve(task, POLICIES[policy])]
+    return asyncio.run(go())
+
+
+def test_escalates_from_nano_to_super():
+    llm = FakeLLM({"nano": [WRONG, WRONG], "super": [RIGHT]})
+    evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum."), "ladder")
+    kinds = [e["type"] for e in evs]
+    assert "escalate" in kinds
+    esc = next(e for e in evs if e["type"] == "escalate")
+    assert (esc["from"], esc["to"]) == ("nano", "super")
+    done = evs[-1]
+    assert done["type"] == "done" and done["status"] == "solved" and done["solved_by"] == "super"
+    assert done["attempts"] == 3
+    assert done["cost"] < done["ultra_equivalent_cost"]
+    assert llm.calls == ["super", "nano", "nano", "super"]  # tests by super, then the climb
+
+
+def test_nano_solves_without_escalation():
+    llm = FakeLLM({"nano": [RIGHT]})
+    evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum."), "ladder")
+    assert not any(e["type"] == "escalate" for e in evs)
+    assert evs[-1]["solved_by"] == "nano"
+
+
+def test_triage_picks_start_rung():
+    llm = FakeLLM({"ultra": [RIGHT]}, triage='{"difficulty": "hard", "why": "dp"}')
+    evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum."), "ladder-auto")
+    tri = next(e for e in evs if e["type"] == "triage")
+    assert tri["start"] == "ultra"
+    assert evs[-1]["solved_by"] == "ultra"
+
+
+def test_user_tests_are_never_replaced_and_failure_reported():
+    user_tests = "def test_x():\n    assert add(2, 2) == 4\n"
+    sneaky = WRONG + "\n```python\n# TESTS\ndef test_x():\n    assert True\n```\nTESTFIX: test is wrong"
+    llm = FakeLLM({"super": [sneaky] * 4})
+    evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum.", tests=user_tests), "super-only")
+    assert not any(e["type"] == "tests" and e["source"].startswith("revised") for e in evs)
+    assert evs[-1]["status"] == "failed" and evs[-1]["attempts"] == 4
+
+
+def test_parsers():
+    code, tests = extract_code("x\n```python\ndef f(): pass\n```\n```python\n# TESTS\ndef test_a(): pass\n```")
+    assert code == "def f(): pass" and tests.startswith("# TESTS")
+    assert extract_json('sure: {"difficulty": "medium"} ok') == {"difficulty": "medium"}
+    assert split_reasoning("<think>hmm</think>answer") == ("answer", "hmm")
+    assert split_reasoning("hmm</think>answer") == ("answer", "hmm")
+
+
+def test_sandbox_blocks_env_and_reports():
+    rep = asyncio.run(run_tests("import os\ndef k(): return os.environ.get('NEBIUS_API_KEY')",
+                                "def test_k():\n    assert k() is None\ndef test_fail():\n    assert 1 == 2"))
+    assert rep.passed == 1 and rep.failed == 1 and not rep.ok
+    rep = asyncio.run(run_tests("while True: pass", "def test_a(): pass", timeout=2))
+    assert rep.fatal.startswith("Timeout")

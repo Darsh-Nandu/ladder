@@ -42,12 +42,13 @@ def split_reasoning(text: str) -> tuple[str, str]:
 
 
 class TokenFactory:
-    def __init__(self, api_key: str | None = None, base_url: str | None = None):
+    def __init__(self, api_key: str | None = None, base_url: str | None = None, transport=None):
         self.api_key = api_key if api_key is not None else config.API_KEY
         self.base_url = (base_url or config.BASE_URL).rstrip("/")
-        self._client = httpx.AsyncClient(timeout=config.REQUEST_TIMEOUT)
+        self._client = httpx.AsyncClient(timeout=config.REQUEST_TIMEOUT, transport=transport)
         # Models that rejected chat_template_kwargs; we fall back to /think system tags for them.
         self._no_template_kwargs: set[str] = set()
+        self._alias: dict[str, str] = {}  # configured model id -> id that the live catalog accepts
 
     async def aclose(self) -> None:
         await self._client.aclose()
@@ -73,7 +74,7 @@ class TokenFactory:
     ) -> LLMResult:
         thinking = tier.thinking if thinking is None else thinking
         body: dict = {
-            "model": tier.model,
+            "model": self._alias.get(tier.model, tier.model),
             "messages": messages,
             "max_tokens": max_tokens or tier.max_tokens,
             # NVIDIA's recommended sampling: greedy-ish for non-reasoning, 0.6/0.95 when thinking.
@@ -97,7 +98,7 @@ class TokenFactory:
         t_in = int(usage.get("prompt_tokens") or 0)
         t_out = int(usage.get("completion_tokens") or 0)
         return LLMResult(
-            tier=tier.name, model=tier.model, content=content, reasoning=reasoning,
+            tier=tier.name, model=body["model"], content=content, reasoning=reasoning,
             tokens_in=t_in, tokens_out=t_out, latency_s=latency, cost=tier.cost(t_in, t_out),
             meta={"finish_reason": data["choices"][0].get("finish_reason")},
         )
@@ -115,6 +116,14 @@ class TokenFactory:
             if r.status_code == 200:
                 return r.json()
             last = f"HTTP {r.status_code}: {r.text[:300]}"
+            if r.status_code in (400, 404) and "model" in r.text.lower() and body["model"] == tier.model \
+                    and tier.model not in self._alias:
+                # Catalog id differs from our default (casing / region): find the closest live id.
+                resolved = await self._resolve(tier)
+                if resolved:
+                    self._alias[tier.model] = resolved
+                    body["model"] = resolved
+                    continue
             if r.status_code == 400 and "chat_template_kwargs" in body:
                 # Endpoint doesn't accept template kwargs: switch this model to system-tag mode.
                 self._no_template_kwargs.add(tier.model)
@@ -125,4 +134,17 @@ class TokenFactory:
                 await asyncio.sleep(2.0 * (attempt + 1))
                 continue
             break
-        raise LLMError(f"{tier.model}: {last}")
+        raise LLMError(f"{body['model']}: {last}")
+
+    async def _resolve(self, tier: Tier) -> str | None:
+        try:
+            ids = await self.list_models()
+        except Exception:
+            return None
+        want = tier.model.lower()
+        for mid in ids:
+            if mid.lower() == want:
+                return mid
+        keys = ["nemotron", tier.name] + (["3"] if "3" in want else [])
+        cands = [m for m in ids if all(k in m.lower() for k in keys) and "vl" not in m.lower().split("-")]
+        return min(cands, key=len) if cands else None

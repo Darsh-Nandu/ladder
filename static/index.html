@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ladder: adaptive-compute coding agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 3v26M23 3v26M9 9h14M9 16h14M9 23h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg>
+    <div>
+      <h1>Ladder</h1>
+      <p>Coding agent that writes, runs &amp; tests code, and climbs from Nemotron Nano to Super to Ultra only when it has to.</p>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-view="solve" role="tab">Solve</button>
+    <button class="tab" data-view="bench" role="tab">Benchmark</button>
+    <button class="tab" data-view="how" role="tab">How it works</button>
+  </nav>
+</header>
+
+<main>
+<!-- ============================ SOLVE ============================ -->
+<section id="view-solve" class="view active">
+  <div class="grid">
+    <div class="panel input-panel">
+      <div class="row between">
+        <h2>Task</h2>
+        <select id="example" aria-label="Load an example task"><option value="">Load an example…</option></select>
+      </div>
+      <label class="lbl" for="spec">Specification</label>
+      <textarea id="spec" rows="10" placeholder="Describe the function to build: name, inputs, outputs, edge cases, examples…"></textarea>
+
+      <details>
+        <summary>Starter code / signature <span class="muted">(optional)</span></summary>
+        <textarea id="starter" rows="3" class="mono" placeholder="def solve(x: int) -> int: ..."></textarea>
+      </details>
+      <details>
+        <summary>Your tests <span class="muted">(optional; otherwise Nemotron writes them)</span></summary>
+        <textarea id="tests" rows="6" class="mono" placeholder="def test_basic():&#10;    assert solve(1) == 2"></textarea>
+      </details>
+
+      <label class="lbl">Policy</label>
+      <div class="seg" id="policy">
+        <button data-p="ladder" class="on" title="Start on Nano, escalate on repeated failure">Ladder</button>
+        <button data-p="ladder-auto" title="Nano triages difficulty and picks the first rung">Ladder + triage</button>
+        <button data-p="ultra-only" title="Baseline: always use Ultra">Ultra only</button>
+        <button data-p="nano-only" title="Baseline: always use Nano">Nano only</button>
+      </div>
+
+      <details id="keybox">
+        <summary>Token Factory API key <span class="muted" id="keystate"></span></summary>
+        <input id="apikey" type="password" autocomplete="off" placeholder="Nebius Token Factory key (kept in this browser only)">
+      </details>
+
+      <button id="run" class="primary">Run agent</button>
+    </div>
+
+    <div class="panel run-panel">
+      <div class="ladder-vis" aria-label="Model ladder">
+        <div class="rung" data-tier="ultra"><span class="rname">Ultra</span><span class="rmodel"></span><span class="dots"></span></div>
+        <div class="rung" data-tier="super"><span class="rname">Super</span><span class="rmodel"></span><span class="dots"></span></div>
+        <div class="rung" data-tier="nano"><span class="rname">Nano</span><span class="rmodel"></span><span class="dots"></span></div>
+      </div>
+
+      <div class="stats" id="stats">
+        <div><span class="k">Spent</span><span class="v" id="s-cost">$0.0000</span></div>
+        <div><span class="k">Same tokens on Ultra</span><span class="v" id="s-ultra">$0.0000</span></div>
+        <div><span class="k">Tokens</span><span class="v" id="s-tok">0</span></div>
+        <div><span class="k">Time</span><span class="v" id="s-time">0.0s</span></div>
+      </div>
+
+      <div id="timeline" class="timeline">
+        <div class="empty">Pick an example or write a spec, then <b>Run agent</b>. Every model call, sandbox run and escalation streams here live.</div>
+      </div>
+
+      <div id="final" class="final hidden">
+        <div class="row between">
+          <h3 id="final-title">Result</h3>
+          <button id="copy" class="ghost">Copy code</button>
+        </div>
+        <pre><code id="final-code" class="language-python"></code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BENCH ============================ -->
+<section id="view-bench" class="view">
+  <div class="panel">
+    <h2>Does climbing the ladder pay off?</h2>
+    <p class="muted" id="bench-meta">Each policy solves the same task set. Final correctness is scored on <b>hidden tests</b> the agent never sees.</p>
+    <div id="bench-body"><div class="empty">No benchmark results yet. Run <code>python -m bench.run_bench</code>.</div></div>
+  </div>
+</section>
+
+<!-- ============================ HOW ============================ -->
+<section id="view-how" class="view">
+  <div class="panel prose">
+    <h2>How Ladder works</h2>
+    <ol>
+      <li><b>Triage (optional).</b> Nemotron 3 Nano reads the spec and rates difficulty, picking the first rung.</li>
+      <li><b>Tests.</b> If you give no tests, Nemotron 3 Super writes a unit-test suite from the spec.</li>
+      <li><b>Write → run → repair.</b> The current rung writes a full solution. It runs in a sandbox with no network, CPU and memory limits and a scrubbed environment. Failures go back to the model with the exact assertion and line.</li>
+      <li><b>Escalate.</b> After two failed attempts on a rung, the agent climbs: Nano → Super → Ultra (reasoning on). The higher rung sees the full failure history and may repair a test only if it provably contradicts the spec. Your own tests are never touched.</li>
+      <li><b>Account.</b> Every call is metered in tokens, dollars and seconds, so you can see exactly what the answer cost and what it would have cost on Ultra alone.</li>
+    </ol>
+    <p>All inference runs on <b>Nebius Token Factory</b> through its OpenAI-compatible API, using NVIDIA Nemotron 3 open models.</p>
+  </div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

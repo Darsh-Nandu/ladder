@@ -23,8 +23,11 @@ _MARK = "@@LADDER_RESULT@@"
 
 # Runs inside the sandbox: import the solution, execute each test_* function, report JSON.
 _HARNESS = r'''
-import json, sys, traceback, io, contextlib
+import json, sys, traceback, io, contextlib, socket
 sys.setrecursionlimit(10000)
+def _no_net(*a, **k):
+    raise OSError("network access is disabled in the Ladder sandbox")
+socket.socket = socket.create_connection = socket.getaddrinfo = _no_net  # second layer when unshare is unavailable
 results = []
 ns = {}
 try:
@@ -110,6 +113,10 @@ def _limits() -> None:
     resource.setrlimit(resource.RLIMIT_CPU, (cpu, cpu))
     resource.setrlimit(resource.RLIMIT_FSIZE, (16 * 1024 * 1024,) * 2)
     os.setsid()
+    if config.SANDBOX_UID and os.geteuid() == 0:
+        os.setgroups([])
+        os.setgid(config.SANDBOX_UID)
+        os.setuid(config.SANDBOX_UID)
 
 
 async def run_tests(code: str, tests: str, timeout: float | None = None) -> RunReport:
@@ -120,6 +127,8 @@ async def run_tests(code: str, tests: str, timeout: float | None = None) -> RunR
         for name, body in (("solution.py", code), ("tests.py", tests), ("harness.py", _HARNESS)):
             with open(os.path.join(d, name), "w") as f:
                 f.write(body)
+        if config.SANDBOX_UID and os.geteuid() == 0:
+            os.chown(d, config.SANDBOX_UID, config.SANDBOX_UID)
         cmd = [sys.executable, "harness.py"]
         if _UNSHARE:
             cmd = ["unshare", "-rn"] + cmd

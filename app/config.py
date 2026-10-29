@@ -3,6 +3,22 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+from pathlib import Path
+
+
+def _load_dotenv() -> None:
+    """Minimal .env loader (no dependency); real environment variables win."""
+    path = Path(__file__).resolve().parent.parent / ".env"
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            k, v = line.split("=", 1)
+            os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+
+
+_load_dotenv()
 
 
 def _env(name: str, default: str) -> str:
@@ -49,3 +65,6 @@ LADDER = ["nano", "super", "ultra"]
 # Sandbox limits for executing model-written code.
 SANDBOX_TIMEOUT_S = float(_env("LADDER_SANDBOX_TIMEOUT", "10"))
 SANDBOX_MEM_MB = int(_env("LADDER_SANDBOX_MEM_MB", "512"))
+# When the server runs as root (Docker), tests run as this unprivileged uid so they cannot read
+# the server's memory or /proc/<pid>/environ (where the API key lives).
+SANDBOX_UID = int(_env("LADDER_SANDBOX_UID", "0"))
