@@ -1,0 +1,8 @@
+[project]
+name = "buggy-inventory"
+version = "0.1.0"
+description = "Sample project with seeded bugs for Ladder's repo mode"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

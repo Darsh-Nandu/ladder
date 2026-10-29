@@ -164,3 +164,54 @@ async def run_tests(code: str, tests: str, timeout: float | None = None) -> RunR
     if not rep.tests:
         rep.fatal = "No test functions found (expected functions named test_*)"
     return rep
+
+
+async def run_command(argv: list[str], cwd: str, timeout: float = 60, tail: int = 20000) -> tuple[int, str, str, bool]:
+    """Run an arbitrary command (e.g. a repo's pytest suite) in `cwd` with the same isolation as
+    run_tests: no network (unshare), rlimits, own process group, scrubbed env, uid drop when root.
+    Returns (exit_code, stdout_tail, stderr_tail, timed_out)."""
+    if config.SANDBOX_UID and os.geteuid() == 0:
+        for root, dirs, files in os.walk(cwd):
+            for n in [root, *(os.path.join(root, x) for x in dirs + files)]:
+                os.lchown(n, config.SANDBOX_UID, config.SANDBOX_UID)
+
+    def limits() -> None:
+        # Runs in the forked child only: give _limits a CPU budget matching this command's timeout.
+        config.SANDBOX_TIMEOUT_S = timeout
+        _limits()
+
+    cmd = (["unshare", "-rn"] if _UNSHARE else []) + list(argv)
+    env = {"PATH": f"{os.path.dirname(sys.executable)}:/usr/bin:/bin", "PYTHONDONTWRITEBYTECODE": "1", "HOME": cwd}
+    proc = await asyncio.create_subprocess_exec(
+        *cmd, cwd=cwd, env=env, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
+        stdin=asyncio.subprocess.DEVNULL, preexec_fn=limits,
+    )
+
+    bufs = (bytearray(), bytearray())
+
+    async def drain(stream: asyncio.StreamReader, buf: bytearray) -> None:
+        while chunk := await stream.read(65536):
+            buf += chunk
+            if len(buf) > 8 * tail:  # keep only the tail so a chatty suite cannot exhaust our memory
+                del buf[:-4 * tail]
+
+    readers = [asyncio.ensure_future(drain(proc.stdout, bufs[0])), asyncio.ensure_future(drain(proc.stderr, bufs[1]))]
+    # Poll the exit status: Process.wait() also waits for the pipes, which a leftover child can hold open.
+    loop = asyncio.get_running_loop()
+    deadline = loop.time() + timeout
+    while proc.returncode is None and loop.time() < deadline:
+        await asyncio.sleep(0.02)
+    timed_out = proc.returncode is None
+    try:
+        os.killpg(proc.pid, 9)  # its own session: the command on timeout, and any children it left behind
+    except (ProcessLookupError, PermissionError):
+        pass
+    for _ in range(250):        # reap the killed command (up to 5s)
+        if proc.returncode is not None:
+            break
+        await asyncio.sleep(0.02)
+    _, pending = await asyncio.wait(readers, timeout=5)  # a setsid'd grandchild may still hold the pipes
+    for task in pending:
+        task.cancel()
+    code = proc.returncode if proc.returncode is not None else -9
+    return code, bufs[0].decode(errors="replace")[-tail:], bufs[1].decode(errors="replace")[-tail:], timed_out

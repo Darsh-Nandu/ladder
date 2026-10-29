@@ -20,6 +20,7 @@
   </div>
   <nav class="tabs" role="tablist">
     <button class="tab active" data-view="solve" role="tab">Solve</button>
+    <button class="tab" data-view="gallery" role="tab">Gallery</button>
     <button class="tab" data-view="bench" role="tab">Benchmark</button>
     <button class="tab" data-view="how" role="tab">How it works</button>
   </nav>
@@ -48,7 +49,8 @@
 
       <label class="lbl">Policy</label>
       <div class="seg" id="policy">
-        <button data-p="ladder" class="on" title="Start on Nano, escalate on repeated failure">Ladder</button>
+        <button data-p="ladder-wide" class="on span2" title="3 parallel Nano drafts per round, then climb: width before height">Ladder · wide</button>
+        <button data-p="ladder" title="Start on Nano, escalate on repeated failure">Ladder</button>
         <button data-p="ladder-auto" title="Nano triages difficulty and picks the first rung">Ladder + triage</button>
         <button data-p="ultra-only" title="Baseline: always use Ultra">Ultra only</button>
         <button data-p="nano-only" title="Baseline: always use Nano">Nano only</button>
@@ -63,6 +65,13 @@
     </div>
 
     <div class="panel run-panel">
+      <div id="replay-bar" class="replay-bar hidden" role="status">
+        <div class="row between">
+          <span id="replay-text" class="replay-text"></span>
+          <button id="replay-btn" class="ghost">Stop replay</button>
+        </div>
+        <details><summary>Task</summary><pre id="replay-spec"></pre></details>
+      </div>
       <div class="ladder-vis" aria-label="Model ladder">
         <div class="rung" data-tier="ultra"><span class="rname">Ultra</span><span class="rmodel"></span><span class="dots"></span></div>
         <div class="rung" data-tier="super"><span class="rname">Super</span><span class="rmodel"></span><span class="dots"></span></div>
@@ -77,17 +86,33 @@
       </div>
 
       <div id="timeline" class="timeline">
-        <div class="empty">Pick an example or write a spec, then <b>Run agent</b>. Every model call, sandbox run and escalation streams here live.</div>
+        <div class="empty">Pick an example or write a spec, then <b>Run agent</b>. Every model call, token, sandbox run and escalation streams here live.
+          Or watch a recorded run in the <a href="#" data-goto="gallery">Gallery</a>.</div>
       </div>
 
       <div id="final" class="final hidden">
         <div class="row between">
           <h3 id="final-title">Result</h3>
-          <button id="copy" class="ghost">Copy code</button>
+          <div class="row">
+            <button id="share" class="ghost hidden" title="Copy a link that replays this run">Copy replay link</button>
+            <button id="copy" class="ghost">Copy code</button>
+          </div>
         </div>
         <pre><code id="final-code" class="language-python"></code></pre>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================ GALLERY ============================ -->
+<section id="view-gallery" class="view">
+  <div class="panel">
+    <h2>Replays</h2>
+    <p class="muted">Recorded runs, replayed event by event through the live view with the waiting compressed.</p>
+    <h3 class="sub">Featured</h3>
+    <div id="g-featured" class="gallery"><div class="empty">No featured runs yet.</div></div>
+    <h3 class="sub">Recent runs</h3>
+    <div id="g-recent" class="gallery"><div class="empty">No recorded runs yet. Finished runs from the Solve tab appear here.</div></div>
   </div>
 </section>
 
@@ -107,7 +132,7 @@
     <ol>
       <li><b>Triage (optional).</b> Nemotron 3 Nano reads the spec and rates difficulty, picking the first rung.</li>
       <li><b>Tests.</b> If you give no tests, Nemotron 3 Super writes a unit-test suite from the spec.</li>
-      <li><b>Write → run → repair.</b> The current rung writes a full solution. It runs in a sandbox with no network, CPU and memory limits and a scrubbed environment. Failures go back to the model with the exact assertion and line.</li>
+      <li><b>Write → run → repair.</b> The current rung writes a full solution. It runs in a sandbox with no network, CPU and memory limits and a scrubbed environment. Failures go back to the model with the exact assertion and line. With <b>Ladder · wide</b>, each Nano round runs three drafts in parallel and keeps the one that passes the most tests: width before height.</li>
       <li><b>Escalate.</b> After two failed attempts on a rung, the agent climbs: Nano → Super → Ultra (reasoning on). The higher rung sees the full failure history and may repair a test only if it provably contradicts the spec. Your own tests are never touched.</li>
       <li><b>Account.</b> Every call is metered in tokens, dollars and seconds, so you can see exactly what the answer cost and what it would have cost on Ultra alone.</li>
     </ol>

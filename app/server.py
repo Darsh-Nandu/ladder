@@ -10,7 +10,7 @@ from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from . import config
+from . import config, runstore
 from .agent import POLICIES, Agent, Task
 from .llm import TokenFactory
 
@@ -78,6 +78,19 @@ async def bench_results():
     return JSONResponse({"available": True, **json.loads(path.read_text())})
 
 
+@app.get("/api/runs")
+async def list_runs():
+    return runstore.list_runs()
+
+
+@app.get("/api/runs/{run_id}")
+async def get_run(run_id: str):
+    run = runstore.load(run_id)
+    if run is None:
+        raise HTTPException(404, "no such run")
+    return run
+
+
 @app.post("/api/solve")
 async def solve(req: SolveRequest, request: Request):
     if req.policy not in POLICIES:
@@ -86,6 +99,12 @@ async def solve(req: SolveRequest, request: Request):
     if not (config.API_KEY or user_key):
         raise HTTPException(401, "No Token Factory key on the server: paste your Nebius API key in Settings.")
 
+    # Only advertise a replay id when the run can actually be written (see Recorder.save).
+    rec = runstore.Recorder(req.spec, req.policy) if runstore.writable() else None
+    headers = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+    if rec:
+        headers["X-Ladder-Run"] = rec.id  # the replay id, valid once the run reaches 'done'
+
     async def stream():
         llm = TokenFactory(api_key=user_key) if user_key else shared_llm()
         try:
@@ -93,15 +112,18 @@ async def solve(req: SolveRequest, request: Request):
                 agent = Agent(llm)
                 task = Task(spec=req.spec, tests=req.tests, starter=req.starter)
                 async for ev in agent.solve(task, POLICIES[req.policy]):
+                    if rec:
+                        rec.add(ev)
                     if await request.is_disconnected():
                         break
                     yield f"data: {json.dumps(ev)}\n\n"
         finally:
+            if rec:
+                rec.save()  # no-op unless a 'done' event was produced
             if user_key:
                 await llm.aclose()
 
-    return StreamingResponse(stream(), media_type="text/event-stream",
-                             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+    return StreamingResponse(stream(), media_type="text/event-stream", headers=headers)
 
 
 @app.get("/healthz")

@@ -1,0 +1,3 @@
+# Optional: run Ladder as an MCP server (python -m app.mcp_server). See docs/mcp.md.
+-r requirements.txt
+mcp>=2.3,<3
