@@ -93,3 +93,44 @@ def test_sandbox_blocks_env_and_reports():
     assert rep.passed == 1 and rep.failed == 1 and not rep.ok
     rep = asyncio.run(run_tests("while True: pass", "def test_a(): pass", timeout=2))
     assert rep.fatal.startswith("Timeout")
+
+
+class StreamingFakeLLM(FakeLLM):
+    """Also streams its answer through on_delta, and can fail a given draft."""
+
+    def __init__(self, *a, fail_temps=(), **kw):
+        super().__init__(*a, **kw)
+        self.fail_temps = set(fail_temps)
+
+    async def chat(self, tier, messages, on_delta=None, temperature=None, **kw):
+        if temperature in self.fail_temps:
+            from app.llm import LLMError
+            raise LLMError("boom")
+        r = await super().chat(tier, messages)
+        if on_delta:
+            on_delta("reasoning", "thinking...")
+            for i in range(0, len(r.content), 7):
+                on_delta("content", r.content[i:i + 7])
+        return r
+
+
+def test_wide_policy_picks_passing_draft_and_streams():
+    llm = StreamingFakeLLM({"nano": [WRONG, RIGHT, WRONG]})
+    evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum."), "ladder-wide")
+    pick = next(e for e in evs if e["type"] == "pick")
+    assert pick["ok"] and pick["candidate"] == 1 and pick["width"] == 3
+    assert [s["passed"] for s in pick["scores"]] == [0, 2, 0]
+    assert evs[-1]["status"] == "solved" and evs[-1]["solved_by"] == "nano" and evs[-1]["rounds"] == 1
+    deltas = [e for e in evs if e["type"] == "delta"]
+    assert deltas, "deltas must be forwarded"
+    code_text = "".join(e["text"] for e in deltas if e["sid"] == "code-2" and e["kind"] == "content")
+    assert code_text == RIGHT  # coalescing never loses or reorders text
+    assert {e["sid"] for e in evs if e["type"] == "run"} == {"code-1", "code-2", "code-3"}
+
+
+def test_one_failed_draft_does_not_kill_the_round():
+    # draft index 2 runs at temperature 0.8 on nano and raises
+    llm = StreamingFakeLLM({"nano": [RIGHT, WRONG]}, fail_temps={0.8})
+    evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum."), "ladder-wide")
+    assert any(e["type"] == "error" and e.get("recoverable") for e in evs)
+    assert evs[-1]["status"] == "solved"
