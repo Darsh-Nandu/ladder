@@ -14,6 +14,15 @@ Most coding agents send every request to the biggest model. That is slow and exp
 
 The result is Ultra-class reliability at roughly Nano-class cost for the easy majority of tasks. On the hard tail, it is still cheaper than sending everything to Ultra. The benchmark below measures this on **hidden tests** the agent never sees.
 
+### One engine, four ways to use it
+
+| Surface | What you get |
+|---|---|
+| **Web app** (`uvicorn app.server:app`) | Live token streaming of every Nemotron call, including the reasoning trace. Parallel drafts appear side by side, with a per-test pass/fail chip for each sandbox run and a live cost meter. A **Gallery** of recorded runs replays through the same view, with `#run=<id>` deep links. |
+| **CLI** (`python -m app.cli spec.md`) | The same agent in the terminal, writing the solution to a file. |
+| **Repo mode** (`python -m app.repo_agent path/to/project`) | Point it at a real project whose `pytest` suite fails. It patches source files (never tests) in a sandboxed copy and climbs the ladder until the suite is green, then prints the diff (`--apply` writes it back). [docs/repo-mode.md](docs/repo-mode.md) |
+| **MCP server** (`python -m app.mcp_server`) | Claude Code, Cursor or any MCP client can delegate "write a verified function" to Ladder and get back code, tests, the rung path and the bill. [docs/mcp.md](docs/mcp.md) |
+
 
 ---
 
@@ -48,6 +57,7 @@ The result is Ultra-class reliability at roughly Nano-class cost for the easy ma
 
 | Policy | Behaviour |
 |---|---|
+| `ladder-wide` (default) | **Width before height**: each round on Nano runs 3 drafts in parallel at different temperatures, the sandbox picks the best, and only then does the agent climb. Three Nano drafts cost less than one Super call. |
 | `ladder` | Nano → Super → Ultra, 2 attempts per rung |
 | `ladder-auto` | Nano triages difficulty first, then starts on the matching rung |
 | `nano-only` / `super-only` / `ultra-only` | single-model baselines, 4 attempts |
@@ -57,7 +67,7 @@ The result is Ultra-class reliability at roughly Nano-class cost for the easy ma
 `bench/tasks.jsonl` holds 24 original tasks (8 easy, 8 medium, 8 hard), e.g. an operator-precedence expression evaluator, an RFC 6901 JSON-pointer resolver, and Dijkstra with lexicographic tie-breaking. Each task has a reference solution and **hidden tests**. `bench/validate_tasks.py` proves every reference passes its hidden tests, and that a stub solution fails at least 70% of them.
 
 ```bash
-python -m bench.run_bench                 # 5 policies x 24 tasks, writes bench/results/latest.json
+python -m bench.run_bench                 # 6 policies x 24 tasks, writes bench/results/latest.json
 python -m bench.run_bench -p ladder ultra-only --difficulty hard
 ```
 
@@ -83,6 +93,21 @@ uvicorn app.server:app --port 8000
 ```bash
 python -m app.cli spec.md                       # Nemotron writes the tests
 python -m app.cli spec.md --tests my_tests.py -o solution.py --policy ladder-auto
+```
+
+**Repo mode** (fix a failing test suite; try the bundled example with 3 seeded bugs):
+
+```bash
+python -m app.repo_agent examples/buggy_inventory            # dry run: prints the diff
+python -m app.repo_agent path/to/your/project --apply        # writes the fix back when the suite passes
+```
+
+A live run on `examples/buggy_inventory`: Nano fixed 1 of 3 bugs, Ladder escalated, and Super fixed the remaining two (float rounding → `Decimal` half-up, an off-by-one discount threshold, a sort order). 13/13 tests passed for $0.0025 in 25 s.
+
+**MCP server** (`pip install -r requirements-mcp.txt`):
+
+```bash
+claude mcp add ladder -e NEBIUS_API_KEY=$NEBIUS_API_KEY -- "$PWD/.venv/bin/python" -m app.mcp_server
 ```
 
 **Docker:**
@@ -122,6 +147,11 @@ app/agent.py     the ladder loop: triage → tests → write/run/repair → esca
 app/sandbox.py   isolated test runner (unshare -rn, rlimits, scrubbed env, per-test results)
 app/server.py    FastAPI + Server-Sent Events
 app/cli.py       terminal front-end
+app/repo_agent.py  repo mode: fix a failing pytest suite in a real project
+app/mcp_server.py  MCP server (tools: solve_function, list_policies)
+app/runstore.py  recorded runs for replays (runs/, featured replays in runs/featured/)
+docs/events.md   the agent event-stream contract shared by UI, CLI, MCP and benchmark
+examples/        sample buggy project for repo mode
 static/          single-page UI (no build step)
 bench/           task set, validator, benchmark runner
 tests/           offline tests
