@@ -188,7 +188,8 @@ function renderStats() {
   $("#s-ultra").textContent = usd(totals.ultra);
   $("#s-tok").textContent = totals.tok.toLocaleString();
 }
-const ROLE = { triage: "Triaging difficulty", tests: "Writing unit tests", code: "Writing solution" };
+const ROLE = { triage: "Triaging difficulty", tests: "Writing unit tests", code: "Writing solution",
+  salvage: "Salvaging cut-off reasoning → code" };
 const roleName = (r) => ROLE[r] || esc(r);
 
 function callTitle(ev) {

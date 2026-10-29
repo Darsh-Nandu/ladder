@@ -328,6 +328,15 @@ class Agent:
         temp = None if index == 0 else min(1.0, (0.6 if base.thinking else 0.2) + 0.3 * index)
         r = await self._llm(emit, ledger, "code", tier, messages, sid, extra=extra, temperature=temp)
         code, new_tests = extract_code(r.content)
+        if not code and r.reasoning and r.meta.get("finish_reason") == "length":
+            # The reasoning ate the whole token budget. Don't throw that analysis away: hand its tail back
+            # to the same model with thinking off and ask only for the code (one cheap call, not a whole rung).
+            salvage = messages + [{"role": "user", "content": (
+                "Your analysis so far (it was cut off by the length limit):\n<analysis>\n"
+                f"{r.reasoning[-6000:]}\n</analysis>\n\nStop analysing. Output the complete solution module now, "
+                "in ONE ```python code block, with no other text.")}]
+            r = await self._llm(emit, ledger, "salvage", tier, salvage, f"{sid}s", extra=extra, thinking=False)
+            code, new_tests = extract_code(r.content)
         revised = ""
         if new_tests and not tests_locked and tier != "nano" and "def test" in new_tests:
             revised = next((ln[8:].strip() for ln in r.content.splitlines() if ln.startswith("TESTFIX:")), "") \

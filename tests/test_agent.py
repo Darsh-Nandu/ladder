@@ -134,3 +134,23 @@ def test_one_failed_draft_does_not_kill_the_round():
     evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum."), "ladder-wide")
     assert any(e["type"] == "error" and e.get("recoverable") for e in evs)
     assert evs[-1]["status"] == "solved"
+
+
+def test_salvages_reasoning_cut_off_by_max_tokens():
+    class CutOffLLM(FakeLLM):
+        async def chat(self, tier, messages, **kw):
+            sys = messages[0]["content"]
+            if "unit tests" in sys:
+                return await super().chat(tier, messages)
+            self.calls.append(f"{tier.name}:{'salvage' if 'Stop analysing' in messages[-1]['content'] else 'code'}")
+            if "Stop analysing" in messages[-1]["content"]:
+                assert kw.get("thinking") is False and "long analysis" in messages[-1]["content"]
+                return LLMResult(tier.name, tier.model, RIGHT, "", 50, 20, 0.01, 0.0)
+            return LLMResult(tier.name, tier.model, "", "long analysis " * 50, 100, 12000, 0.01, 0.0,
+                             meta={"finish_reason": "length"})
+
+    llm = CutOffLLM({})
+    evs = collect(Agent(llm), Task(spec="Write add(a, b) returning the sum."), "super-only")
+    assert evs[-1]["status"] == "solved" and evs[-1]["attempts"] == 1
+    assert llm.calls == ["super", "super:code", "super:salvage"]
+    assert any(e["type"] == "call" and e["role"] == "salvage" for e in evs)
