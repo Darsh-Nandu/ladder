@@ -66,7 +66,7 @@ button.ghost { background: none; border: 1px solid var(--line); color: var(--mut
 
 /* ---------- ladder visual ---------- */
 .ladder-vis { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-.rung { display: grid; grid-template-columns: 70px 1fr auto; align-items: center; gap: 12px; padding: 10px 14px;
+.rung { display: grid; grid-template-columns: 70px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 14px;
   border-radius: 10px; border: 1px solid var(--line); background: var(--bg); transition: all .3s; position: relative; }
 .rung::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; background: var(--c); opacity: .35; }
 .rung[data-tier="nano"] { --c: var(--nano); }
@@ -135,3 +135,10 @@ tr.hl td { background: #76b9000d; }
 .callout { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--bg); }
 .callout .big { font-size: 26px; font-weight: 700; color: var(--green); }
 .table-wrap { overflow-x: auto; }
+.grid > * { min-width: 0; }
+.ev-meta { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .rung { grid-template-columns: 52px minmax(0, 1fr) auto; padding: 9px 10px; gap: 8px; }
+  .ev-meta { margin-left: 0; width: 100%; }
+  .stats .v { font-size: 17px; }
+}

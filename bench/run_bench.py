@@ -84,6 +84,30 @@ def summarize(records: list[dict], tasks: list[dict], policies: list[str]) -> di
     }
 
 
+def markdown_table(summary: dict) -> str:
+    diffs = list(summary["difficulty_counts"])
+    head = "| Policy | Solved (hidden tests) | " + " | ".join(diffs) + " | Total cost | $ / solve | Avg time | Solves finished on |"
+    sep = "|" + "---|" * (len(diffs) + 6)
+    rows = [head, sep]
+    for p in summary["policies"]:
+        cells = [f"**{p['name']}**", f"{p['solved']}/{p['n']} ({p['pass_rate']:.0%})"]
+        cells += [f"{p['by_difficulty'][d]['solved']}/{p['by_difficulty'][d]['n']}" for d in diffs]
+        cells += [f"${p['cost']:.4f}", f"${p['cost_per_solve']:.4f}", f"{p['avg_wall']:.1f}s",
+                  ", ".join(f"{k} {v}" for k, v in p["solved_by"].items()) or "-"]
+        rows.append("| " + " | ".join(cells) + " |")
+    return f"_{summary['n_tasks']} tasks, run {summary['generated_at']}_\n\n" + "\n".join(rows)
+
+
+def update_readme(summary: dict) -> None:
+    readme = HERE.parent / "README.md"
+    start, end = "<!-- BENCH_RESULTS_START -->", "<!-- BENCH_RESULTS_END -->"
+    text = readme.read_text()
+    if start in text and end in text:
+        pre, rest = text.split(start, 1)
+        _, post = rest.split(end, 1)
+        readme.write_text(f"{pre}{start}\n{markdown_table(summary)}\n{end}{post}")
+
+
 def print_table(summary: dict) -> None:
     print(f"\n{'policy':14s} {'solved':>8s} {'cost $':>9s} {'$/solve':>9s} {'avg s':>7s}  solved_by")
     for p in summary["policies"]:
@@ -116,6 +140,7 @@ async def main() -> None:
     (RESULTS / f"summary-{stamp}.json").write_text(json.dumps(summary, indent=1))
     if not args.no_latest:
         (RESULTS / "latest.json").write_text(json.dumps(summary, indent=1))
+        update_readme(summary)
     print_table(summary)
 
 
