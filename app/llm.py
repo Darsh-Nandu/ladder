@@ -45,7 +45,7 @@ class TokenFactory:
     def __init__(self, api_key: str | None = None, base_url: str | None = None, transport=None):
         self.api_key = api_key if api_key is not None else config.API_KEY
         self.base_url = (base_url or config.BASE_URL).rstrip("/")
-        self._client = httpx.AsyncClient(timeout=config.REQUEST_TIMEOUT, transport=transport)
+        self._client = httpx.AsyncClient(timeout=httpx.Timeout(config.REQUEST_TIMEOUT, connect=20.0), transport=transport)
         # Models that rejected chat_template_kwargs; we fall back to /think system tags for them.
         self._no_template_kwargs: set[str] = set()
         self._alias: dict[str, str] = {}  # configured model id -> id that the live catalog accepts

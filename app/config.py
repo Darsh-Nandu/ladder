@@ -43,20 +43,33 @@ BASE_URL = _env("NEBIUS_BASE_URL", "https://api.tokenfactory.nebius.com/v1").rst
 API_KEY = os.getenv("NEBIUS_API_KEY", "")
 REQUEST_TIMEOUT = float(_env("LADDER_REQUEST_TIMEOUT", "240"))
 
+# Same Nemotron 3 weights, different catalog ids. Token Factory is the default; NVIDIA's API is
+# supported as a fallback for development (set NEBIUS_BASE_URL=https://integrate.api.nvidia.com/v1).
+PROVIDER = "nvidia" if "api.nvidia.com" in BASE_URL else "nebius"
+_DEFAULT_IDS = {
+    "nebius": {"nano": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+               "super": "nvidia/nemotron-3-super-120b-a12b",
+               "ultra": "nvidia/Nemotron-3-Ultra-550b-a55b"},
+    # Free NVIDIA API (dev): Nano 3 / Super 3 return 404 there, so use their same-size 3.5 siblings.
+    "nvidia": {"nano": "nvidia/nemotron-3.5-lightning-30b-a3b",
+               "super": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+               "ultra": "nvidia/nemotron-3-ultra-550b-a55b"},
+}[PROVIDER]
+
 TIERS: dict[str, Tier] = {
     "nano": Tier(
         "nano",
-        _env("LADDER_NANO_MODEL", "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B"),
+        _env("LADDER_NANO_MODEL", _DEFAULT_IDS["nano"]),
         0.06, 0.24, thinking=False, max_tokens=4096,
     ),
     "super": Tier(
         "super",
-        _env("LADDER_SUPER_MODEL", "nvidia/nemotron-3-super-120b-a12b"),
+        _env("LADDER_SUPER_MODEL", _DEFAULT_IDS["super"]),
         0.30, 0.90, thinking=True, max_tokens=12000,
     ),
     "ultra": Tier(
         "ultra",
-        _env("LADDER_ULTRA_MODEL", "nvidia/Nemotron-3-Ultra-550b-a55b"),
+        _env("LADDER_ULTRA_MODEL", _DEFAULT_IDS["ultra"]),
         1.00, 3.00, thinking=True, max_tokens=16000,
     ),
 }

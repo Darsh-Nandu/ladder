@@ -109,7 +109,7 @@ The app is a CPU-only container, so it fits a **Nebius Serverless Endpoint** on 
 | Env var | Default |
 |---|---|
 | `NEBIUS_API_KEY` | (required) |
-| `NEBIUS_BASE_URL` | `https://api.tokenfactory.nebius.com/v1` |
+| `NEBIUS_BASE_URL` | `https://api.tokenfactory.nebius.com/v1`. Pointing it at `https://integrate.api.nvidia.com/v1` (with an `nvapi-` key) switches to NVIDIA's API as a development fallback. There, Nano 3 and Super 3 aren't callable, so their same-size siblings Nemotron 3.5 Lightning 30B-A3B and Nemotron 3.5 Super 120B-A12B are used. |
 | `LADDER_NANO_MODEL` / `LADDER_SUPER_MODEL` / `LADDER_ULTRA_MODEL` | ids above. If an id is rejected, Ladder looks up the closest Nemotron id in `/v1/models` |
 | `LADDER_SANDBOX_TIMEOUT` / `LADDER_SANDBOX_MEM_MB` | `10` s / `512` MB |
 | `LADDER_MAX_CONCURRENT` | `4` concurrent solves per server |
