@@ -24,7 +24,7 @@ async def main() -> int:
     ap.add_argument("spec", help="file with the task specification, or '-' for stdin")
     ap.add_argument("--tests", help="your own test file (test_* functions); otherwise Nemotron writes tests")
     ap.add_argument("--starter", help="file with a required signature / starter code")
-    ap.add_argument("--policy", default="ladder", choices=sorted(POLICIES))
+    ap.add_argument("--policy", default="ladder-wide", choices=sorted(POLICIES))
     ap.add_argument("-o", "--out", help="write the passing solution here")
     a = ap.parse_args()
 
@@ -37,7 +37,9 @@ async def main() -> int:
         async for ev in Agent(llm).solve(task, POLICIES[a.policy]):
             t = ev["type"]
             if t == "call":
-                print(f"{tag(ev['tier'])} {ev['role']}{' #' + str(ev['attempt']) if ev.get('attempt') else ''} …", flush=True)
+                draft = f" (draft {ev['candidate'] + 1}/{ev['width']})" if ev.get("width", 1) > 1 else ""
+                print(f"{tag(ev['tier'])} {ev['role']}{' #' + str(ev['attempt']) if ev.get('attempt') else ''}{draft} …",
+                      flush=True)
             elif t == "llm":
                 print(f"{C['dim']}      {ev['tokens_in']}→{ev['tokens_out']} tok  ${ev['cost']:.5f}  {ev['latency_s']}s{C['end']}")
             elif t == "triage":
@@ -49,6 +51,10 @@ async def main() -> int:
                 print(f"{col}sandbox{C['end']} {ev['summary'].splitlines()[0]}")
                 if not ev["ok"]:
                     print(C["dim"] + "\n".join("      " + ln for ln in ev["summary"].splitlines()[1:6]) + C["end"])
+            elif t == "pick":
+                scores = "  ".join(f"#{x['candidate'] + 1}:{x['passed']}/{x['total']}" for x in ev["scores"])
+                col = C["ok"] if ev["ok"] else C["warn"]
+                print(f"{col}pick{C['end']} draft {ev['candidate'] + 1} of {ev['width']}  [{scores}]")
             elif t == "escalate":
                 print(f"{C['warn']}escalate{C['end']} {tag(ev['from'])} → {tag(ev['to'])}")
             elif t == "error":

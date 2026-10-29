@@ -117,7 +117,7 @@ def print_table(summary: dict) -> None:
 
 async def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("-p", "--policies", nargs="+", default=["ladder", "ladder-auto", "nano-only", "super-only", "ultra-only"])
+    ap.add_argument("-p", "--policies", nargs="+", default=["ladder", "ladder-wide", "ladder-auto", "nano-only", "super-only", "ultra-only"])
     ap.add_argument("--difficulty", choices=["easy", "medium", "hard"])
     ap.add_argument("--ids", nargs="+")
     ap.add_argument("--limit", type=int)
