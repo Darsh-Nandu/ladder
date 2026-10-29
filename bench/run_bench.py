@@ -31,15 +31,25 @@ def load_tasks(difficulty: str | None, ids: list[str] | None, limit: int | None)
     return tasks[:limit] if limit else tasks
 
 
-async def run_one(agent: Agent, task: dict, policy: str, sem: asyncio.Semaphore, log) -> dict:
+async def run_one(agent: Agent, task: dict, policy: str, sem: asyncio.Semaphore, log, timeout: float) -> dict:
     async with sem:
-        done, n_escalations = None, 0
+        done, n_escalations, errors = None, 0, []
         t = Task(spec=task["spec"], starter=task.get("starter", ""), id=task["id"])
-        async for ev in agent.solve(t, POLICIES[policy]):
-            if ev["type"] == "escalate":
-                n_escalations += 1
-            if ev["type"] == "done":
-                done = ev
+
+        async def consume() -> None:
+            nonlocal done, n_escalations
+            async for ev in agent.solve(t, POLICIES[policy]):
+                if ev["type"] == "escalate":
+                    n_escalations += 1
+                elif ev["type"] == "error":
+                    errors.append(ev["message"][:200])
+                elif ev["type"] == "done":
+                    done = ev
+
+        try:
+            await asyncio.wait_for(consume(), timeout)
+        except asyncio.TimeoutError:
+            errors.append(f"timeout after {timeout:.0f}s")
         hidden = await run_tests(done["code"], task["hidden_tests"]) if done and done["code"] else None
         rec = {
             "task": task["id"], "difficulty": task["difficulty"], "policy": policy,
@@ -49,13 +59,14 @@ async def run_one(agent: Agent, task: dict, policy: str, sem: asyncio.Semaphore,
             "solved_by": done.get("solved_by") if done else None,
             "attempts": done["attempts"] if done else 0, "escalations": n_escalations,
             "cost": done["cost"] if done else 0.0, "tokens": (done["tokens_in"] + done["tokens_out"]) if done else 0,
-            "wall_s": done["wall_seconds"] if done else 0.0, "by_tier": done["by_tier"] if done else {},
+            "wall_s": done["wall_seconds"] if done else timeout, "by_tier": done["by_tier"] if done else {},
+            "errors": errors,
         }
         log.write(json.dumps(rec) + "\n")
         log.flush()
         mark = "PASS" if rec["solved"] else "fail"
         print(f"  {policy:12s} {task['id']:28s} {mark}  hidden={rec['hidden']:6s} by={rec['solved_by']}  "
-              f"${rec['cost']:.4f}  {rec['wall_s']:.0f}s", flush=True)
+              f"${rec['cost']:.4f}  {rec['wall_s']:.0f}s" + (f"  ERR {errors[-1][:90]}" if errors else ""), flush=True)
         return rec
 
 
@@ -122,6 +133,7 @@ async def main() -> None:
     ap.add_argument("--ids", nargs="+")
     ap.add_argument("--limit", type=int)
     ap.add_argument("-c", "--concurrency", type=int, default=6)
+    ap.add_argument("--task-timeout", type=float, default=1500, help="seconds per (task, policy) run")
     ap.add_argument("--no-latest", action="store_true", help="don't overwrite results/latest.json")
     args = ap.parse_args()
 
@@ -133,7 +145,7 @@ async def main() -> None:
     sem = asyncio.Semaphore(args.concurrency)
     print(f"{len(tasks)} tasks x {len(args.policies)} policies")
     with open(RESULTS / f"run-{stamp}.jsonl", "w") as log:
-        jobs = [run_one(agent, t, p, sem, log) for p in args.policies for t in tasks]
+        jobs = [run_one(agent, t, p, sem, log, args.task_timeout) for p in args.policies for t in tasks]
         records = await asyncio.gather(*jobs)
     await llm.aclose()
     summary = summarize(list(records), tasks, args.policies)

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import random
 import re
 import time
 from dataclasses import dataclass, field
@@ -122,7 +123,7 @@ class TokenFactory:
     async def _post(self, body: dict, tier: Tier, on_delta: Callable[[str, str], None] | None = None) -> dict:
         url = f"{self.base_url}/chat/completions"
         last = ""
-        for attempt in range(4):
+        for attempt in range(6):
             try:
                 if on_delta:
                     async with self._client.stream("POST", url, json=body, headers=self._headers()) as r:
@@ -159,7 +160,8 @@ class TokenFactory:
                 body.pop("stream_options")  # older OpenAI-compatible servers reject it
                 continue
             if status in (429, 500, 502, 503, 504):
-                await asyncio.sleep(2.0 * (attempt + 1))
+                # Shared endpoints throttle bursts: exponential backoff with jitter (~1s, 2s, 4s … capped at 30s).
+                await asyncio.sleep(min(30.0, 2.0 ** attempt) * (0.5 + random.random()))
                 continue
             break
         raise LLMError(f"{body['model']}: {last}")
