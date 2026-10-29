@@ -98,7 +98,7 @@ _Method: hidden tests are never shown to the agent. Run on NVIDIA's free API end
 ## Run it
 
 ```bash
-git clone <this repo> && cd ladder
+git clone https://github.com/Darsh-Nandu/ladder.git && cd ladder
 python -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env            # put your Nebius Token Factory key in NEBIUS_API_KEY
