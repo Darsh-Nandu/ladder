@@ -23,8 +23,8 @@ MAX_STARTER = 8000
 
 POLICY_HELP: dict[str, str] = {
     "ladder": "Start on Nano, climb to Super then Ultra after 2 failed rounds per rung.",
-    "ladder-wide": "Like ladder, but 3 parallel Nano drafts per round before climbing (default; cheapest).",
-    "ladder-auto": "Nano triages the task first and picks the starting rung (easy=Nano, medium=Super, hard=Ultra).",
+    "ladder-wide": "Like ladder, but 3 parallel Nano drafts per round before climbing.",
+    "ladder-auto": "Nano triages the task first and picks the starting rung (easy=Nano, medium=Super, hard=Ultra). Default: best benchmark score.",
     "nano-only": "Nano only, 4 rounds. Baseline: cheapest, weakest.",
     "super-only": "Super only, 4 rounds. Baseline.",
     "ultra-only": "Ultra only, 4 rounds. Baseline: strongest, most expensive.",
@@ -87,7 +87,7 @@ def validate(spec: str, tests: str, starter: str, policy: str) -> None:
             raise ValueError(f"{name} is {len(value)} chars; the limit is {limit}")
 
 
-async def run_solve(agent: Agent, spec: str, tests: str = "", starter: str = "", policy: str = "ladder-wide",
+async def run_solve(agent: Agent, spec: str, tests: str = "", starter: str = "", policy: str = "ladder-auto",
                     on_event: OnEvent | None = None) -> SolveResult:
     """Run one Ladder solve to completion and condense its event stream into a SolveResult.
     Raises ValueError on bad input; `on_event` sees every agent event (for progress reporting)."""
@@ -165,7 +165,7 @@ app: MCPServer = MCPServer(
 
 
 @app.tool()
-async def solve_function(spec: str, tests: str = "", starter: str = "", policy: str = "ladder-wide",
+async def solve_function(spec: str, tests: str = "", starter: str = "", policy: str = "ladder-auto",
                          ctx: Context | None = None) -> SolveResult:
     """Write a Python function that passes unit tests, using the cheapest Nemotron rung that can do it.
 
@@ -173,7 +173,7 @@ async def solve_function(spec: str, tests: str = "", starter: str = "", policy: 
     tests: optional pytest-style test functions (plain asserts, the function is already in scope). They are
         never modified. When empty, Ladder generates tests from the spec. Max 12000 chars.
     starter: optional signature / starter code.
-    policy: one of list_policies(); default 'ladder-wide'.
+    policy: one of list_policies(); default 'ladder-auto'.
     Returns status (solved|failed|error), the code, the tests it passed, cost and a one-line summary.
     Can take a few minutes on hard tasks.
     """

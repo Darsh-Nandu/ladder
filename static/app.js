@@ -12,7 +12,7 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, v); } catch {} },
 };
 
-let CONFIG = null, EXAMPLES = [], policy = "ladder-wide", running = null;
+let CONFIG = null, EXAMPLES = [], policy = "ladder-auto", running = null;
 
 // ------------------------------------------------------------------ tabs
 function showView(name) {

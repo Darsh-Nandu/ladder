@@ -24,7 +24,7 @@ async def main() -> int:
     ap.add_argument("spec", help="file with the task specification, or '-' for stdin")
     ap.add_argument("--tests", help="your own test file (test_* functions); otherwise Nemotron writes tests")
     ap.add_argument("--starter", help="file with a required signature / starter code")
-    ap.add_argument("--policy", default="ladder-wide", choices=sorted(POLICIES))
+    ap.add_argument("--policy", default="ladder-auto", choices=sorted(POLICIES))
     ap.add_argument("-o", "--out", help="write the passing solution here")
     a = ap.parse_args()
 

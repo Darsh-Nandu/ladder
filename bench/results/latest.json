@@ -1,0 +1,3755 @@
+{
+ "generated_at": "2026-10-29 15:01 UTC",
+ "n_tasks": 24,
+ "difficulty_counts": {
+  "easy": 8,
+  "medium": 8,
+  "hard": 8
+ },
+ "policies": [
+  {
+   "name": "ladder",
+   "n": 24,
+   "solved": 20,
+   "pass_rate": 0.8333333333333334,
+   "cost": 0.1909323,
+   "cost_per_solve": 0.009546615,
+   "avg_wall": 172.95375,
+   "tokens": 192896,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 8
+    },
+    "medium": {
+     "n": 8,
+     "solved": 7
+    },
+    "hard": {
+     "n": 8,
+     "solved": 5
+    }
+   },
+   "solved_by": {
+    "nano": 17,
+    "super": 1
+   }
+  },
+  {
+   "name": "ladder-wide",
+   "n": 24,
+   "solved": 19,
+   "pass_rate": 0.7916666666666666,
+   "cost": 0.27082422,
+   "cost_per_solve": 0.014253906315789475,
+   "avg_wall": 168.92291666666668,
+   "tokens": 354557,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 8
+    },
+    "medium": {
+     "n": 8,
+     "solved": 5
+    },
+    "hard": {
+     "n": 8,
+     "solved": 6
+    }
+   },
+   "solved_by": {
+    "nano": 15,
+    "super": 2,
+    "ultra": 1
+   }
+  },
+  {
+   "name": "ladder-auto",
+   "n": 24,
+   "solved": 24,
+   "pass_rate": 1.0,
+   "cost": 0.27458202,
+   "cost_per_solve": 0.0114409175,
+   "avg_wall": 130.04999999999998,
+   "tokens": 217182,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 8
+    },
+    "medium": {
+     "n": 8,
+     "solved": 8
+    },
+    "hard": {
+     "n": 8,
+     "solved": 8
+    }
+   },
+   "solved_by": {
+    "nano": 8,
+    "super": 13,
+    "ultra": 1
+   }
+  },
+  {
+   "name": "nano-only",
+   "n": 24,
+   "solved": 9,
+   "pass_rate": 0.375,
+   "cost": 0.01557486,
+   "cost_per_solve": 0.00173054,
+   "avg_wall": 25.148749999999996,
+   "tokens": 117186,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 4
+    },
+    "medium": {
+     "n": 8,
+     "solved": 4
+    },
+    "hard": {
+     "n": 8,
+     "solved": 1
+    }
+   },
+   "solved_by": {
+    "nano": 7
+   }
+  },
+  {
+   "name": "super-only",
+   "n": 24,
+   "solved": 21,
+   "pass_rate": 0.875,
+   "cost": 0.1635192,
+   "cost_per_solve": 0.007786628571428571,
+   "avg_wall": 87.96041666666666,
+   "tokens": 219164,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 8
+    },
+    "medium": {
+     "n": 8,
+     "solved": 8
+    },
+    "hard": {
+     "n": 8,
+     "solved": 5
+    }
+   },
+   "solved_by": {
+    "super": 21
+   }
+  },
+  {
+   "name": "ultra-only",
+   "n": 24,
+   "solved": 21,
+   "pass_rate": 0.875,
+   "cost": 0.523611,
+   "cost_per_solve": 0.024933857142857146,
+   "avg_wall": 361.12375,
+   "tokens": 242427,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 8
+    },
+    "medium": {
+     "n": 8,
+     "solved": 8
+    },
+    "hard": {
+     "n": 8,
+     "solved": 5
+    }
+   },
+   "solved_by": {
+    "ultra": 21
+   }
+  }
+ ],
+ "records": [
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00042827999999999996,
+   "tokens": 1289,
+   "wall_s": 4.7,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.00038009999999999997,
+     "tokens": 651
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 4.817999999999999e-05,
+     "tokens": 638
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00053532,
+   "tokens": 1667,
+   "wall_s": 6.42,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.000438,
+     "tokens": 750
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 9.732e-05,
+     "tokens": 917
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00059736,
+   "tokens": 1771,
+   "wall_s": 5.96,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0005196,
+     "tokens": 856
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 7.776e-05,
+     "tokens": 915
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00050124,
+   "tokens": 1482,
+   "wall_s": 5.67,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0004332,
+     "tokens": 714
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 6.803999999999999e-05,
+     "tokens": 768
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.00071922,
+   "tokens": 2833,
+   "wall_s": 8.54,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0005565,
+     "tokens": 853
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00016272,
+     "tokens": 1980
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00051252,
+   "tokens": 1612,
+   "wall_s": 7.17,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.00042,
+     "tokens": 730
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 9.252e-05,
+     "tokens": 882
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0007564799999999999,
+   "tokens": 2281,
+   "wall_s": 38.0,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0005853,
+     "tokens": 925
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00017117999999999997,
+     "tokens": 1356
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00080292,
+   "tokens": 2250,
+   "wall_s": 24.1,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0007026000000000001,
+     "tokens": 1076
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00010031999999999999,
+     "tokens": 1174
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0007711199999999999,
+   "tokens": 2316,
+   "wall_s": 8.38,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0006347999999999999,
+     "tokens": 1028
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00013632,
+     "tokens": 1288
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00098088,
+   "tokens": 2965,
+   "wall_s": 13.57,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0007203,
+     "tokens": 1103
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00026058,
+     "tokens": 1862
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 4,
+   "escalations": 1,
+   "cost": 0.00881958,
+   "tokens": 16222,
+   "wall_s": 78.16,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.0084411,
+     "tokens": 12227
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00037848,
+     "tokens": 3995
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00047268,
+   "tokens": 1505,
+   "wall_s": 6.26,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.000384,
+     "tokens": 678
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 8.868000000000001e-05,
+     "tokens": 827
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00189876,
+   "tokens": 6029,
+   "wall_s": 35.99,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0011355,
+     "tokens": 1657
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00076326,
+     "tokens": 4372
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0008100000000000001,
+   "tokens": 2337,
+   "wall_s": 21.39,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0006846,
+     "tokens": 1066
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00012539999999999999,
+     "tokens": 1271
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "13/14",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00081624,
+   "tokens": 2520,
+   "wall_s": 9.33,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0006339,
+     "tokens": 1035
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00018233999999999997,
+     "tokens": 1485
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0008512799999999999,
+   "tokens": 2632,
+   "wall_s": 15.5,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0006408,
+     "tokens": 1032
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00021047999999999998,
+     "tokens": 1600
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "13/14",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00109068,
+   "tokens": 3720,
+   "wall_s": 41.8,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0006531,
+     "tokens": 1113
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00043757999999999997,
+     "tokens": 2607
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 2,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 1500.0,
+   "by_tier": {},
+   "errors": [
+    "timeout after 1500s"
+   ]
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00095832,
+   "tokens": 2830,
+   "wall_s": 21.8,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0007902,
+     "tokens": 1246
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00016812,
+     "tokens": 1584
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "failed",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": null,
+   "attempts": 6,
+   "escalations": 2,
+   "cost": 0.060416920000000006,
+   "tokens": 40524,
+   "wall_s": 754.18,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.014935200000000003,
+     "tokens": 19270
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00047472,
+     "tokens": 3925
+    },
+    "ultra": {
+     "calls": 2,
+     "cost": 0.045007000000000005,
+     "tokens": 17329
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "failed",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": null,
+   "attempts": 6,
+   "escalations": 2,
+   "cost": 0.1032416,
+   "tokens": 73441,
+   "wall_s": 1452.3,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.0250266,
+     "tokens": 32920
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.001383,
+     "tokens": 11023
+    },
+    "ultra": {
+     "calls": 2,
+     "cost": 0.076832,
+     "tokens": 29498
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "22/22",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0012508799999999998,
+   "tokens": 3747,
+   "wall_s": 15.97,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0009597,
+     "tokens": 1477
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00029117999999999993,
+     "tokens": 2270
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "9/15",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.00252942,
+   "tokens": 13398,
+   "wall_s": 61.22,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0008775,
+     "tokens": 1373
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0016519199999999999,
+     "tokens": 12025
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0011706,
+   "tokens": 3525,
+   "wall_s": 14.48,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0009516,
+     "tokens": 1522
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.000219,
+     "tokens": 2003
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00054876,
+   "tokens": 2664,
+   "wall_s": 6.02,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.00038280000000000003,
+     "tokens": 654
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00016596,
+     "tokens": 2010
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0007075199999999999,
+   "tokens": 3412,
+   "wall_s": 7.76,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.00042990000000000004,
+     "tokens": 741
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00027761999999999996,
+     "tokens": 2671
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "super",
+   "attempts": 7,
+   "escalations": 1,
+   "cost": 0.0026913599999999994,
+   "tokens": 10997,
+   "wall_s": 58.93,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0020213999999999996,
+     "tokens": 3530
+    },
+    "nano": {
+     "calls": 6,
+     "cost": 0.0006699599999999998,
+     "tokens": 7467
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00069,
+   "tokens": 3224,
+   "wall_s": 28.96,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0004575,
+     "tokens": 741
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00023249999999999999,
+     "tokens": 2483
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0008493600000000001,
+   "tokens": 3807,
+   "wall_s": 8.99,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.000615,
+     "tokens": 918
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00023435999999999997,
+     "tokens": 2889
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0006630000000000001,
+   "tokens": 3247,
+   "wall_s": 5.22,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.000393,
+     "tokens": 700
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00027,
+     "tokens": 2547
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00101952,
+   "tokens": 4674,
+   "wall_s": 13.49,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0005646000000000001,
+     "tokens": 902
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00045492,
+     "tokens": 3772
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00090216,
+   "tokens": 4219,
+   "wall_s": 6.86,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0006243,
+     "tokens": 989
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00027786,
+     "tokens": 3230
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00111048,
+   "tokens": 5141,
+   "wall_s": 29.72,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.000687,
+     "tokens": 1086
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00042347999999999995,
+     "tokens": 4055
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "9/10",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0017146799999999997,
+   "tokens": 7415,
+   "wall_s": 22.43,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0010083,
+     "tokens": 1423
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.0007063799999999999,
+     "tokens": 5992
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0013085999999999998,
+   "tokens": 5919,
+   "wall_s": 13.0,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0008583,
+     "tokens": 1291
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00045029999999999994,
+     "tokens": 4628
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00072474,
+   "tokens": 3439,
+   "wall_s": 16.78,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.00043620000000000003,
+     "tokens": 736
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00028854,
+     "tokens": 2703
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "11/12",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0024310799999999995,
+   "tokens": 10687,
+   "wall_s": 71.48,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0010337999999999999,
+     "tokens": 1544
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.0013972799999999999,
+     "tokens": 9143
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.001065,
+   "tokens": 4899,
+   "wall_s": 11.65,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0006801,
+     "tokens": 1061
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.0003849,
+     "tokens": 3838
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "13/14",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0012596399999999998,
+   "tokens": 5770,
+   "wall_s": 13.28,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0007203,
+     "tokens": 1131
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.0005393399999999999,
+     "tokens": 4639
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00127548,
+   "tokens": 5773,
+   "wall_s": 11.53,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0007713,
+     "tokens": 1177
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00050418,
+     "tokens": 4596
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "12/14",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00206232,
+   "tokens": 9224,
+   "wall_s": 26.56,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0008546999999999999,
+     "tokens": 1337
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00120762,
+     "tokens": 7887
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "failed",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": null,
+   "attempts": 10,
+   "escalations": 2,
+   "cost": 0.06091824,
+   "tokens": 62841,
+   "wall_s": 1068.73,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.0132573,
+     "tokens": 18205
+    },
+    "nano": {
+     "calls": 6,
+     "cost": 0.004265939999999999,
+     "tokens": 27065
+    },
+    "ultra": {
+     "calls": 2,
+     "cost": 0.043395,
+     "tokens": 17571
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0016952400000000004,
+   "tokens": 7460,
+   "wall_s": 17.83,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0011637000000000002,
+     "tokens": 1661
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00053154,
+     "tokens": 5799
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "ultra",
+   "attempts": 10,
+   "escalations": 2,
+   "cost": 0.06392622,
+   "tokens": 50410,
+   "wall_s": 1072.38,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.0130635,
+     "tokens": 17241
+    },
+    "nano": {
+     "calls": 6,
+     "cost": 0.0020827199999999997,
+     "tokens": 14501
+    },
+    "ultra": {
+     "calls": 2,
+     "cost": 0.048780000000000004,
+     "tokens": 18668
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "failed",
+   "solved": false,
+   "hidden": "File \"/tmp/ladder-wm1_unut/solution.py\", line 2\n    cron_dow = candidate.isoweek",
+   "solved_by": null,
+   "attempts": 10,
+   "escalations": 2,
+   "cost": 0.11105658,
+   "tokens": 91391,
+   "wall_s": 1385.25,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.025155,
+     "tokens": 32616
+    },
+    "nano": {
+     "calls": 6,
+     "cost": 0.00335358,
+     "tokens": 27075
+    },
+    "ultra": {
+     "calls": 2,
+     "cost": 0.082548,
+     "tokens": 31700
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.00113088,
+   "tokens": 5577,
+   "wall_s": 19.44,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.00057,
+     "tokens": 1044
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00056088,
+     "tokens": 4533
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "super",
+   "attempts": 7,
+   "escalations": 1,
+   "cost": 0.009466440000000001,
+   "tokens": 34856,
+   "wall_s": 125.59,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.005971200000000001,
+     "tokens": 8984
+    },
+    "nano": {
+     "calls": 6,
+     "cost": 0.0034952399999999997,
+     "tokens": 25872
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "ladder-wide",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "nano",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.0016069199999999997,
+   "tokens": 7511,
+   "wall_s": 12.27,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.000975,
+     "tokens": 1548
+    },
+    "nano": {
+     "calls": 3,
+     "cost": 0.00063192,
+     "tokens": 5963
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00049578,
+   "tokens": 1687,
+   "wall_s": 8.43,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 7.338e-05,
+     "tokens": 989
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.00042239999999999997,
+     "tokens": 698
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00055518,
+   "tokens": 2003,
+   "wall_s": 7.87,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.00012348,
+     "tokens": 1260
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.0004317,
+     "tokens": 743
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0012676200000000001,
+   "tokens": 2602,
+   "wall_s": 8.28,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 2.772e-05,
+     "tokens": 375
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0012399000000000002,
+     "tokens": 2227
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0005923800000000001,
+   "tokens": 1962,
+   "wall_s": 9.43,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.00010878,
+     "tokens": 1192
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.00048360000000000005,
+     "tokens": 770
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00069456,
+   "tokens": 2126,
+   "wall_s": 8.61,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 9.125999999999999e-05,
+     "tokens": 1221
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.0006033,
+     "tokens": 905
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0013904400000000002,
+   "tokens": 2635,
+   "wall_s": 11.24,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 2.6940000000000003e-05,
+     "tokens": 362
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0013635000000000001,
+     "tokens": 2273
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0022398,
+   "tokens": 3727,
+   "wall_s": 24.67,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 2.7899999999999997e-05,
+     "tokens": 378
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0022119,
+     "tokens": 3349
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.0009155999999999999,
+   "tokens": 3987,
+   "wall_s": 11.59,
+   "by_tier": {
+    "nano": {
+     "calls": 3,
+     "cost": 0.00025079999999999997,
+     "tokens": 2953
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.0006648,
+     "tokens": 1034
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00064866,
+   "tokens": 2387,
+   "wall_s": 6.79,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.00013806000000000002,
+     "tokens": 1497
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.0005106,
+     "tokens": 890
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0060243599999999994,
+   "tokens": 8270,
+   "wall_s": 81.95,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 2.8859999999999998e-05,
+     "tokens": 403
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.005995499999999999,
+     "tokens": 7867
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0010431,
+   "tokens": 3259,
+   "wall_s": 14.12,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.00017849999999999997,
+     "tokens": 1961
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.0008646,
+     "tokens": 1298
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0005526,
+   "tokens": 1956,
+   "wall_s": 7.05,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.0001164,
+     "tokens": 1220
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.00043620000000000003,
+     "tokens": 736
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00897756,
+   "tokens": 12610,
+   "wall_s": 74.26,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 4.056e-05,
+     "tokens": 562
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.008937,
+     "tokens": 12048
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00143742,
+   "tokens": 3003,
+   "wall_s": 9.0,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 3.162e-05,
+     "tokens": 425
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0014058,
+     "tokens": 2578
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00361956,
+   "tokens": 5480,
+   "wall_s": 37.24,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 3.5159999999999995e-05,
+     "tokens": 466
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0035844,
+     "tokens": 5014
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.0209424,
+   "tokens": 25713,
+   "wall_s": 237.53,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 3.27e-05,
+     "tokens": 434
+    },
+    "super": {
+     "calls": 3,
+     "cost": 0.020909700000000003,
+     "tokens": 25279
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.048156239999999996,
+   "tokens": 18878,
+   "wall_s": 578.74,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 3.924e-05,
+     "tokens": 552
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.001077,
+     "tokens": 1584
+    },
+    "ultra": {
+     "calls": 1,
+     "cost": 0.04704,
+     "tokens": 16742
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0053452199999999995,
+   "tokens": 8272,
+   "wall_s": 110.13,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 4.512e-05,
+     "tokens": 641
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.005300099999999999,
+     "tokens": 7631
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.006609060000000001,
+   "tokens": 9024,
+   "wall_s": 73.39,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 3.456e-05,
+     "tokens": 507
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0065745000000000005,
+     "tokens": 8517
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.01349334,
+   "tokens": 17463,
+   "wall_s": 147.11,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 3.5039999999999997e-05,
+     "tokens": 500
+    },
+    "super": {
+     "calls": 3,
+     "cost": 0.0134583,
+     "tokens": 16963
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "failed",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": null,
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.071986,
+   "tokens": 30699,
+   "wall_s": 878.23,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 5.31e-05,
+     "tokens": 789
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.0017319000000000002,
+     "tokens": 2477
+    },
+    "ultra": {
+     "calls": 2,
+     "cost": 0.070201,
+     "tokens": 27433
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00293538,
+   "tokens": 5242,
+   "wall_s": 26.9,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 4.127999999999999e-05,
+     "tokens": 583
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0028941,
+     "tokens": 4659
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "failed",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": null,
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.07162952,
+   "tokens": 38877,
+   "wall_s": 723.78,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 3.972e-05,
+     "tokens": 563
+    },
+    "super": {
+     "calls": 1,
+     "cost": 0.0011718,
+     "tokens": 1700
+    },
+    "ultra": {
+     "calls": 2,
+     "cost": 0.07041800000000001,
+     "tokens": 36614
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00303024,
+   "tokens": 5320,
+   "wall_s": 24.86,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 4.434e-05,
+     "tokens": 655
+    },
+    "super": {
+     "calls": 2,
+     "cost": 0.0029859,
+     "tokens": 4665
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00014327999999999997,
+   "tokens": 1293,
+   "wall_s": 5.15,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.00014327999999999997,
+     "tokens": 1293
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00019716,
+   "tokens": 1618,
+   "wall_s": 12.48,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.00019716,
+     "tokens": 1618
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "failed",
+   "solved": false,
+   "hidden": "ImportError: cannot import name 'list' from 'typing' (/usr/lib/python3.14/typing",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.00063468,
+   "tokens": 6159,
+   "wall_s": 23.68,
+   "by_tier": {
+    "nano": {
+     "calls": 5,
+     "cost": 0.00063468,
+     "tokens": 6159
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "failed",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.00165576,
+   "tokens": 10223,
+   "wall_s": 78.21,
+   "by_tier": {
+    "nano": {
+     "calls": 5,
+     "cost": 0.00165576,
+     "tokens": 10223
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.000207,
+   "tokens": 1716,
+   "wall_s": 6.8,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.000207,
+     "tokens": 1716
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 5.586e-05,
+   "tokens": 529,
+   "wall_s": 3.53,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 5.586e-05,
+     "tokens": 529
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.00011496,
+   "tokens": 788,
+   "wall_s": 7.38,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.00011496,
+     "tokens": 788
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "nano-only",
+   "agent_status": "failed",
+   "solved": false,
+   "hidden": "ImportError: cannot import name 'list' from 'typing' (/usr/lib/python3.14/typing",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.00162972,
+   "tokens": 10815,
+   "wall_s": 71.46,
+   "by_tier": {
+    "nano": {
+     "calls": 5,
+     "cost": 0.00162972,
+     "tokens": 10815
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00023490000000000002,
+   "tokens": 1959,
+   "wall_s": 8.92,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.00023490000000000002,
+     "tokens": 1959
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0005373,
+   "tokens": 3513,
+   "wall_s": 18.6,
+   "by_tier": {
+    "nano": {
+     "calls": 2,
+     "cost": 0.0005373,
+     "tokens": 3513
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "failed",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.0011292,
+   "tokens": 10909,
+   "wall_s": 29.35,
+   "by_tier": {
+    "nano": {
+     "calls": 5,
+     "cost": 0.0011292,
+     "tokens": 10909
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 5.4779999999999994e-05,
+   "tokens": 511,
+   "wall_s": 2.48,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 5.4779999999999994e-05,
+     "tokens": 511
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "failed",
+   "solved": false,
+   "hidden": "11/12",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.0020707800000000004,
+   "tokens": 15574,
+   "wall_s": 89.36,
+   "by_tier": {
+    "nano": {
+     "calls": 5,
+     "cost": 0.0020707800000000004,
+     "tokens": 15574
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 8.46e-05,
+   "tokens": 696,
+   "wall_s": 4.87,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 8.46e-05,
+     "tokens": 696
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.00010656,
+   "tokens": 816,
+   "wall_s": 3.11,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.00010656,
+     "tokens": 816
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "nano-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.0006515399999999999,
+   "tokens": 5375,
+   "wall_s": 19.53,
+   "by_tier": {
+    "nano": {
+     "calls": 3,
+     "cost": 0.0006515399999999999,
+     "tokens": 5375
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.00021894,
+   "tokens": 1348,
+   "wall_s": 7.54,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.00021894,
+     "tokens": 1348
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.00018252,
+   "tokens": 1260,
+   "wall_s": 7.15,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.00018252,
+     "tokens": 1260
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.0006681,
+   "tokens": 5357,
+   "wall_s": 22.91,
+   "by_tier": {
+    "nano": {
+     "calls": 3,
+     "cost": 0.0006681,
+     "tokens": 5357
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.00014952,
+   "tokens": 1028,
+   "wall_s": 6.16,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.00014952,
+     "tokens": 1028
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "failed",
+   "solved": false,
+   "hidden": "14/15",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.0036742199999999997,
+   "tokens": 29377,
+   "wall_s": 128.64,
+   "by_tier": {
+    "nano": {
+     "calls": 5,
+     "cost": 0.0036742199999999997,
+     "tokens": 29377
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.00016704,
+   "tokens": 1158,
+   "wall_s": 5.43,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.00016704,
+     "tokens": 1158
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0008527799999999999,
+   "tokens": 4001,
+   "wall_s": 36.09,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.0008527799999999999,
+     "tokens": 4001
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "nano-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.00015366,
+   "tokens": 1163,
+   "wall_s": 4.74,
+   "by_tier": {
+    "nano": {
+     "calls": 1,
+     "cost": 0.00015366,
+     "tokens": 1163
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0011535,
+   "tokens": 1977,
+   "wall_s": 8.54,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0011535,
+     "tokens": 1977
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0010557000000000001,
+   "tokens": 1909,
+   "wall_s": 7.06,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0010557000000000001,
+     "tokens": 1909
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0011895,
+   "tokens": 2243,
+   "wall_s": 6.87,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0011895,
+     "tokens": 2243
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0009213,
+   "tokens": 1765,
+   "wall_s": 14.35,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0009213,
+     "tokens": 1765
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0010446000000000001,
+   "tokens": 1952,
+   "wall_s": 16.96,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0010446000000000001,
+     "tokens": 1952
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0016797,
+   "tokens": 2613,
+   "wall_s": 15.06,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0016797,
+     "tokens": 2613
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0026775,
+   "tokens": 4009,
+   "wall_s": 26.42,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0026775,
+     "tokens": 4009
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0011409,
+   "tokens": 2205,
+   "wall_s": 9.62,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0011409,
+     "tokens": 2205
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0014517000000000002,
+   "tokens": 2631,
+   "wall_s": 9.65,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0014517000000000002,
+     "tokens": 2631
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0027792,
+   "tokens": 4236,
+   "wall_s": 69.78,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0027792,
+     "tokens": 4236
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0019938,
+   "tokens": 3462,
+   "wall_s": 26.72,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0019938,
+     "tokens": 3462
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "super",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.002208,
+   "tokens": 3764,
+   "wall_s": 29.78,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.002208,
+     "tokens": 3764
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.006783,
+   "tokens": 8954,
+   "wall_s": 83.15,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.006783,
+     "tokens": 8954
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.0020058000000000003,
+   "tokens": 3974,
+   "wall_s": 11.11,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.0020058000000000003,
+     "tokens": 3974
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0019407,
+   "tokens": 3189,
+   "wall_s": 75.37,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0019407,
+     "tokens": 3189
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0021084,
+   "tokens": 3616,
+   "wall_s": 44.69,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0021084,
+     "tokens": 3616
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0054369000000000015,
+   "tokens": 7179,
+   "wall_s": 63.02,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0054369000000000015,
+     "tokens": 7179
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.005658,
+   "tokens": 7900,
+   "wall_s": 42.07,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.005658,
+     "tokens": 7900
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0055044000000000004,
+   "tokens": 7390,
+   "wall_s": 41.27,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0055044000000000004,
+     "tokens": 7390
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.026733600000000003,
+   "tokens": 32926,
+   "wall_s": 237.0,
+   "by_tier": {
+    "super": {
+     "calls": 4,
+     "cost": 0.026733600000000003,
+     "tokens": 32926
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "failed",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.047993100000000004,
+   "tokens": 60623,
+   "wall_s": 795.43,
+   "by_tier": {
+    "super": {
+     "calls": 5,
+     "cost": 0.047993100000000004,
+     "tokens": 60623
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0005717999999999999,
+   "tokens": 1046,
+   "wall_s": 3.49,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0005717999999999999,
+     "tokens": 1046
+    }
+   },
+   "errors": [
+    "test writer returned no test functions"
+   ]
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "failed",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 4,
+   "escalations": 0,
+   "cost": 0.0367272,
+   "tokens": 45188,
+   "wall_s": 454.46,
+   "by_tier": {
+    "super": {
+     "calls": 5,
+     "cost": 0.0367272,
+     "tokens": 45188
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "super-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0027609,
+   "tokens": 4413,
+   "wall_s": 19.18,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0027609,
+     "tokens": 4413
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.006962,
+   "tokens": 3000,
+   "wall_s": 76.88,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.006962,
+     "tokens": 3000
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.003372,
+   "tokens": 1860,
+   "wall_s": 62.06,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.003372,
+     "tokens": 1860
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "ultra",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.004725,
+   "tokens": 2903,
+   "wall_s": 35.18,
+   "by_tier": {
+    "ultra": {
+     "calls": 3,
+     "cost": 0.004725,
+     "tokens": 2903
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.003784,
+   "tokens": 2040,
+   "wall_s": 75.67,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.003784,
+     "tokens": 2040
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.005928999999999999,
+   "tokens": 2755,
+   "wall_s": 72.01,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.005928999999999999,
+     "tokens": 2755
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "ultra",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.013336,
+   "tokens": 5976,
+   "wall_s": 179.48,
+   "by_tier": {
+    "ultra": {
+     "calls": 3,
+     "cost": 0.013336,
+     "tokens": 5976
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00798,
+   "tokens": 3506,
+   "wall_s": 131.52,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.00798,
+     "tokens": 3506
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.004746,
+   "tokens": 2594,
+   "wall_s": 60.62,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.004746,
+     "tokens": 2594
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.006488,
+   "tokens": 3100,
+   "wall_s": 70.37,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.006488,
+     "tokens": 3100
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.026816,
+   "tokens": 10194,
+   "wall_s": 356.71,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.026816,
+     "tokens": 10194
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.008516,
+   "tokens": 3970,
+   "wall_s": 98.31,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.008516,
+     "tokens": 3970
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00445,
+   "tokens": 2262,
+   "wall_s": 30.12,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.00445,
+     "tokens": 2262
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.027711,
+   "tokens": 11469,
+   "wall_s": 322.69,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.027711,
+     "tokens": 11469
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0049499999999999995,
+   "tokens": 2660,
+   "wall_s": 38.64,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.0049499999999999995,
+     "tokens": 2660
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.023007,
+   "tokens": 8903,
+   "wall_s": 266.33,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.023007,
+     "tokens": 8903
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.013856,
+   "tokens": 5812,
+   "wall_s": 206.21,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.013856,
+     "tokens": 5812
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": false,
+   "hidden": "13/14",
+   "solved_by": "ultra",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.072992,
+   "tokens": 37462,
+   "wall_s": 565.39,
+   "by_tier": {
+    "ultra": {
+     "calls": 3,
+     "cost": 0.072992,
+     "tokens": 37462
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.015445,
+   "tokens": 6645,
+   "wall_s": 202.1,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.015445,
+     "tokens": 6645
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "ultra",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.021915,
+   "tokens": 9111,
+   "wall_s": 208.75,
+   "by_tier": {
+    "ultra": {
+     "calls": 2,
+     "cost": 0.021915,
+     "tokens": 9111
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "ultra",
+   "attempts": 3,
+   "escalations": 0,
+   "cost": 0.089092,
+   "tokens": 34278,
+   "wall_s": 1084.65,
+   "by_tier": {
+    "ultra": {
+     "calls": 4,
+     "cost": 0.089092,
+     "tokens": 34278
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "ultra",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.082452,
+   "tokens": 43104,
+   "wall_s": 795.03,
+   "by_tier": {
+    "ultra": {
+     "calls": 3,
+     "cost": 0.082452,
+     "tokens": 43104
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 1500.0,
+   "by_tier": {},
+   "errors": [
+    "timeout after 1500s"
+   ]
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "ultra",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.075087,
+   "tokens": 38823,
+   "wall_s": 728.25,
+   "by_tier": {
+    "ultra": {
+     "calls": 3,
+     "cost": 0.075087,
+     "tokens": 38823
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "ultra-only",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 1500.0,
+   "by_tier": {},
+   "errors": [
+    "timeout after 1500s"
+   ]
+  }
+ ]
+}
