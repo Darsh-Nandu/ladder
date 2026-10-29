@@ -538,18 +538,21 @@ async function loadBench() {
   const P = data.policies || [];
   const maxCost = Math.max(...P.map((p) => num(p.cost)), 1e-9);
   const ultra = P.find((p) => p.name === "ultra-only");
-  const ladder = P.find((p) => p.name === "ladder");
+  // Headline: the best ladder policy (highest pass rate, then cheapest) against Ultra-only.
+  const ladder = P.filter((p) => String(p.name).startsWith("ladder"))
+    .sort((a, b) => num(b.pass_rate) - num(a.pass_rate) || num(a.cost) - num(b.cost))[0];
   let callouts = "";
   if (ultra && ladder) {
     const pct = ultra.cost > 0 ? Math.round((1 - ladder.cost / ultra.cost) * 100) : 0;
+    const speed = num(ladder.avg_wall) > 0 ? num(ultra.avg_wall) / num(ladder.avg_wall) : 0;
     callouts = `<div class="callouts">
+      <div class="callout"><div class="big">${Math.round(num(ladder.pass_rate) * 100)}% vs ${Math.round(num(ultra.pass_rate) * 100)}%</div>hidden-test pass rate, <b>${esc(ladder.name)}</b> vs Ultra-only</div>
       <div class="callout"><div class="big">${pct}%</div>cheaper than Ultra-only</div>
-      <div class="callout"><div class="big">${Math.round(num(ladder.pass_rate) * 100)}% vs ${Math.round(num(ultra.pass_rate) * 100)}%</div>hidden-test pass rate, Ladder vs Ultra-only</div>
-      <div class="callout"><div class="big">${num(ladder.solved_by?.nano)}/${num(ladder.solved)}</div>Ladder solves finished on Nano without escalating</div>
+      <div class="callout"><div class="big">${speed.toFixed(1)}×</div>faster than Ultra-only per task</div>
     </div>`;
   }
   const diffs = Object.keys(data.difficulty_counts || {});
-  const rows = P.map((p) => `<tr class="${p.name === "ladder" ? "hl" : ""}">
+  const rows = P.map((p) => `<tr class="${p === ladder ? "hl" : ""}">
       <td><b>${esc(p.name)}</b></td>
       <td>${num(p.solved)}/${num(p.n)} <span class="muted">(${Math.round(num(p.pass_rate) * 100)}%)</span></td>
       ${diffs.map((d) => `<td>${num(p.by_difficulty?.[d]?.solved)}/${num(p.by_difficulty?.[d]?.n)}</td>`).join("")}
@@ -596,8 +599,16 @@ function scatter(P) {
   const maxC = Math.max(...P.map((p) => num(p.cost))) * 1.15 || 1;
   const x = (c) => m + (num(c) / maxC) * (W - 2 * m);
   const y = (r) => H - m - num(r) * (H - 2 * m);
-  const pts = P.map((p) => `<circle cx="${x(p.cost)}" cy="${y(p.pass_rate)}" r="7" fill="${POLICY_COLOR[p.name] || "#999"}"/>
-    <text x="${x(p.cost) + 11}" y="${y(p.pass_rate) + 4}" fill="var(--text)" font-size="12">${esc(p.name)}</text>`).join("");
+  // Nudge labels down until they don't overlap an already placed one (~7px per char at 12px).
+  const placed = [];
+  const pts = [...P].sort((a, b) => num(b.pass_rate) - num(a.pass_rate) || num(a.cost) - num(b.cost)).map((p) => {
+    const lx = x(p.cost) + 11, w = String(p.name).length * 7;
+    let ly = y(p.pass_rate) + 4;
+    while (placed.some((q) => lx < q.x + q.w && q.x < lx + w && Math.abs(q.y - ly) < 14)) ly += 14;
+    placed.push({ x: lx, y: ly, w });
+    return `<circle cx="${x(p.cost)}" cy="${y(p.pass_rate)}" r="7" fill="${POLICY_COLOR[p.name] || "#999"}"/>
+    <text x="${lx}" y="${ly}" fill="var(--text)" font-size="12">${esc(p.name)}</text>`;
+  }).join("");
   const grid = [0, .25, .5, .75, 1].map((r) => `<line x1="${m}" x2="${W - m}" y1="${y(r)}" y2="${y(r)}" stroke="var(--line)"/>
     <text x="${m - 8}" y="${y(r) + 4}" text-anchor="end" fill="var(--muted)" font-size="11">${r * 100}%</text>`).join("");
   return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Pass rate versus total cost per policy">${grid}
