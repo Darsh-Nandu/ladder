@@ -1,0 +1,1157 @@
+{
+ "generated_at": "2026-11-22 06:39 UTC",
+ "n_tasks": 24,
+ "difficulty_counts": {
+  "easy": 8,
+  "medium": 8,
+  "hard": 8
+ },
+ "policies": [
+  {
+   "name": "ladder",
+   "n": 24,
+   "solved": 24,
+   "pass_rate": 1.0,
+   "cost": 0.2791976,
+   "cost_per_solve": 0.011633233333333333,
+   "avg_wall": 104.94333333333333,
+   "tokens": 398146,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 8
+    },
+    "medium": {
+     "n": 8,
+     "solved": 8
+    },
+    "hard": {
+     "n": 8,
+     "solved": 8
+    }
+   },
+   "solved_by": {
+    "nano": 12,
+    "super": 10,
+    "ultra": 2
+   }
+  },
+  {
+   "name": "ladder-auto",
+   "n": 24,
+   "solved": 0,
+   "pass_rate": 0.0,
+   "cost": 0.0,
+   "cost_per_solve": 0.0,
+   "avg_wall": 64.78625,
+   "tokens": 0,
+   "by_difficulty": {
+    "easy": {
+     "n": 8,
+     "solved": 0
+    },
+    "medium": {
+     "n": 8,
+     "solved": 0
+    },
+    "hard": {
+     "n": 8,
+     "solved": 0
+    }
+   },
+   "solved_by": {}
+  }
+ ],
+ "records": [
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00318096,
+   "tokens": 6193,
+   "wall_s": 35.95,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0025266000000000004,
+     "tokens": 3036
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.0006543599999999999,
+     "tokens": 3157
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00240654,
+   "tokens": 4491,
+   "wall_s": 23.24,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0020625,
+     "tokens": 2555
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00034403999999999994,
+     "tokens": 1936
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00338106,
+   "tokens": 5805,
+   "wall_s": 27.72,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0029973,
+     "tokens": 3609
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00038375999999999997,
+     "tokens": 2196
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00260652,
+   "tokens": 4372,
+   "wall_s": 19.84,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0023646,
+     "tokens": 2860
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00024192,
+     "tokens": 1512
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00353526,
+   "tokens": 5938,
+   "wall_s": 30.34,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0031683,
+     "tokens": 3755
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00036696,
+     "tokens": 2183
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.00522612,
+   "tokens": 12729,
+   "wall_s": 72.28,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0033684,
+     "tokens": 4006
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0018577199999999998,
+     "tokens": 8723
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.00496602,
+   "tokens": 12182,
+   "wall_s": 67.75,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0035265,
+     "tokens": 5101
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0014395200000000001,
+     "tokens": 7081
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0037078200000000006,
+   "tokens": 6128,
+   "wall_s": 27.11,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0033576000000000005,
+     "tokens": 4026
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00035022000000000005,
+     "tokens": 2102
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.00421044,
+   "tokens": 10163,
+   "wall_s": 55.89,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0029145,
+     "tokens": 3561
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00129594,
+     "tokens": 6602
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "10/10",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.00754194,
+   "tokens": 15505,
+   "wall_s": 86.58,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0058449,
+     "tokens": 7423
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00169704,
+     "tokens": 8082
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0048137399999999995,
+   "tokens": 8787,
+   "wall_s": 46.26,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.004146899999999999,
+     "tokens": 4945
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00066684,
+     "tokens": 3842
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "11/11",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.00270984,
+   "tokens": 5134,
+   "wall_s": 22.23,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0022524,
+     "tokens": 2754
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.00045744,
+     "tokens": 2380
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.012973080000000001,
+   "tokens": 23027,
+   "wall_s": 190.71,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0110058,
+     "tokens": 13474
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00196728,
+     "tokens": 9553
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "nano",
+   "attempts": 1,
+   "escalations": 0,
+   "cost": 0.0037595400000000005,
+   "tokens": 8031,
+   "wall_s": 36.58,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0028032000000000005,
+     "tokens": 3420
+    },
+    "nano": {
+     "calls": 1,
+     "cost": 0.0009563400000000001,
+     "tokens": 4611
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.00851724,
+   "tokens": 17657,
+   "wall_s": 111.4,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0065244000000000005,
+     "tokens": 8200
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00199284,
+     "tokens": 9457
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "nano",
+   "attempts": 2,
+   "escalations": 0,
+   "cost": 0.0038440799999999997,
+   "tokens": 10322,
+   "wall_s": 50.57,
+   "by_tier": {
+    "super": {
+     "calls": 1,
+     "cost": 0.0023436,
+     "tokens": 2924
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0015004799999999998,
+     "tokens": 7398
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.0142017,
+   "tokens": 24476,
+   "wall_s": 151.67,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.012159900000000001,
+     "tokens": 14641
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0020418,
+     "tokens": 9835
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.00959058,
+   "tokens": 19798,
+   "wall_s": 105.74,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.007538700000000001,
+     "tokens": 9723
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00205188,
+     "tokens": 10075
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "14/14",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.0125622,
+   "tokens": 22612,
+   "wall_s": 141.01,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.010573200000000001,
+     "tokens": 12946
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.001989,
+     "tokens": 9666
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.00887148,
+   "tokens": 17181,
+   "wall_s": 102.51,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.007188,
+     "tokens": 8986
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0016834799999999998,
+     "tokens": 8195
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "ultra",
+   "attempts": 5,
+   "escalations": 2,
+   "cost": 0.07040992,
+   "tokens": 55135,
+   "wall_s": 446.37,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.0246486,
+     "tokens": 29488
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00202032,
+     "tokens": 10026
+    },
+    "ultra": {
+     "calls": 1,
+     "cost": 0.043741,
+     "tokens": 15621
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "12/12",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.0181695,
+   "tokens": 27155,
+   "wall_s": 179.84,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0166785,
+     "tokens": 19675
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0014910000000000001,
+     "tokens": 7480
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "15/15",
+   "solved_by": "ultra",
+   "attempts": 5,
+   "escalations": 2,
+   "cost": 0.0566146,
+   "tokens": 54438,
+   "wall_s": 358.07,
+   "by_tier": {
+    "super": {
+     "calls": 3,
+     "cost": 0.0286512,
+     "tokens": 34090
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.0020844,
+     "tokens": 10641
+    },
+    "ultra": {
+     "calls": 1,
+     "cost": 0.025879,
+     "tokens": 9707
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "ladder",
+   "agent_status": "solved",
+   "solved": true,
+   "hidden": "13/13",
+   "solved_by": "super",
+   "attempts": 3,
+   "escalations": 1,
+   "cost": 0.01139742,
+   "tokens": 20887,
+   "wall_s": 128.98,
+   "by_tier": {
+    "super": {
+     "calls": 2,
+     "cost": 0.0096615,
+     "tokens": 12127
+    },
+    "nano": {
+     "calls": 2,
+     "cost": 0.00173592,
+     "tokens": 8760
+    }
+   },
+   "errors": []
+  },
+  {
+   "task": "slugify",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 53.0,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~64s. 2"
+   ]
+  },
+  {
+   "task": "run_length_codec",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 60.52,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~54s. 2"
+   ]
+  },
+  {
+   "task": "top_words",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 73.88,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~15s. 2"
+   ]
+  },
+  {
+   "task": "caesar_cipher",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 78.65,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 502: {\"error\":{\"message\":\"All 2 routed attempt(s) failed with upstream provider errors (empty_completion \u00d71, timeout \u00d71). This is a provider-side failure, not a problem wi"
+   ]
+  },
+  {
+   "task": "chunk_list",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 86.44,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~47s. 2"
+   ]
+  },
+  {
+   "task": "title_case_small_words",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 64.82,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~34s. 2"
+   ]
+  },
+  {
+   "task": "parse_duration",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 60.03,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~79s. 2"
+   ]
+  },
+  {
+   "task": "fizzbuzz_rules",
+   "difficulty": "easy",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 73.56,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~58s. 2"
+   ]
+  },
+  {
+   "task": "merge_intervals",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 71.05,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~14s. 2"
+   ]
+  },
+  {
+   "task": "roman_numerals",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 74.08,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~5m. 2 "
+   ]
+  },
+  {
+   "task": "lru_cache",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 67.8,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~4m. 2 "
+   ]
+  },
+  {
+   "task": "bracket_error_index",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 68.05,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~3m. 2 "
+   ]
+  },
+  {
+   "task": "semver_compare",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 52.73,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 502: {\"error\":{\"message\":\"All 3 routed attempt(s) failed with upstream provider errors (empty_completion \u00d73). This is a provider-side failure, not a problem with your requ"
+   ]
+  },
+  {
+   "task": "spiral_order",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 61.52,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~4m. 2 "
+   ]
+  },
+  {
+   "task": "ini_parser",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 77.35,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~4m. 2 "
+   ]
+  },
+  {
+   "task": "base_conversion",
+   "difficulty": "medium",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 50.98,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~3m. 2 "
+   ]
+  },
+  {
+   "task": "eval_int_expr",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 53.23,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~68s. 2"
+   ]
+  },
+  {
+   "task": "json_pointer",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 43.95,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~63s. 2"
+   ]
+  },
+  {
+   "task": "shortest_path_lex",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 57.77,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~19s. 2"
+   ]
+  },
+  {
+   "task": "text_justify",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 48.48,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~19s. 2"
+   ]
+  },
+  {
+   "task": "cron_next",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 73.32,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~55s. 2"
+   ]
+  },
+  {
+   "task": "edit_script",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 55.5,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~61s. 2"
+   ]
+  },
+  {
+   "task": "mini_regex",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 62.78,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 502: {\"error\":{\"message\":\"All 1 routed attempt(s) failed with upstream provider errors (empty_completion \u00d71). This is a provider-side failure, not a problem with your requ"
+   ]
+  },
+  {
+   "task": "free_slots",
+   "difficulty": "hard",
+   "policy": "ladder-auto",
+   "agent_status": "error",
+   "solved": false,
+   "hidden": "-",
+   "solved_by": null,
+   "attempts": 0,
+   "escalations": 0,
+   "cost": 0.0,
+   "tokens": 0,
+   "wall_s": 85.38,
+   "by_tier": {},
+   "errors": [
+    "nemotron-3.5-lightning: HTTP 429: {\"error\":{\"message\":\"All models exhausted: 3 routes checked (3 rate-limited or on cooldown). Add more API keys or wait for rate limits to reset. Soonest reset ~48s. 2"
+   ]
+  }
+ ]
+}
