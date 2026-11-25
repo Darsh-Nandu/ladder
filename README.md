@@ -93,6 +93,17 @@ _24 tasks, run 2026-10-29 15:01 UTC_
 - **Super-only is a strong, cheap baseline (21/24).** The ladder's edge over it is the hard tail, where escalating to Ultra and repairing with evidence closes the last gaps.
 - **Salvaging cut-off reasoning (added after this run):** on the hardest tasks, Super sometimes spent its whole token budget thinking and emitted no code, which forced an escalation. Ladder now feeds that reasoning back with thinking off and asks only for the code. In a targeted re-run, `ladder` solved `mini_regex` on Super for $0.015 (it previously needed Ultra, $0.069), and solved `text_justify`, which it had failed before. The table above predates this fix, so it is a conservative baseline.
 
+**Repeat runs (2026-11-22, current code).** To check the table above was not a lucky run, I ran plain `ladder` twice more on all 24 tasks, through an OpenAI-compatible gateway serving the same three Nemotron models:
+
+| Run | Solved (hidden tests) | Total cost | Avg time | Solves finished on |
+|---|---|---|---|---|
+| repeat 1 | 22/24 | $0.2985 | 110.9s | nano 8, super 12, ultra 2 |
+| repeat 2 | 24/24 | $0.2792 | 104.9s | nano 12, super 10, ultra 2 |
+
+Across the original run and the two repeats, plain `ladder` solved 20, 22 and 24 of 24. The gateway's free tier rate limited the Nano model often, and a rate limited call counts as a failed rung, so more solves moved up to Super than in the original run. Treat the cost and "finished on" columns of the repeats as pessimistic.
+
+`ladder-auto` could not be measured in these runs: its triage step calls Nano first and does not fall back when that call is rate limited, so all 48 of its runs stopped before writing any code. That is a gap in the triage step, not a result.
+
 _Method: hidden tests are never shown to the agent. Run on NVIDIA's free API endpoint, which serves the same Nemotron 3 Ultra and the same-size Nemotron 3.5 Lightning-30B-A3B / 3.5 Super-120B-A12B siblings for the Nano and Super rungs. Costs are computed from the returned token usage at Nebius Token Factory list prices. Latency reflects a shared free endpoint, not Token Factory's dedicated capacity._
 
 ## Run it
